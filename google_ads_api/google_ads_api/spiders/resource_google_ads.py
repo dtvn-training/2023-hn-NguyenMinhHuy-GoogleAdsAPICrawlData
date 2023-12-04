@@ -1,6 +1,5 @@
 import scrapy
 from google_ads_api.items import GoogleAdsApiItem
-from w3lib.html import remove_tags
 
 class ResourceGoogleAdsSpider(scrapy.Spider):
     name = "resource_google_ads"

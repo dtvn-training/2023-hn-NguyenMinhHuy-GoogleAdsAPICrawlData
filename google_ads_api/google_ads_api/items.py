@@ -28,3 +28,15 @@ class GoogleAdsApiItem(scrapy.Item):
     # segment_selectable = scrapy.Field()
     # segment_sortable = scrapy.Field()
     # segment_repeated = scrapy.Field()
+
+class SegmentsItem(scrapy.Item):
+    segment_name = scrapy.Field()
+    segment_field_description = scrapy.Field()
+    segment_category = scrapy.Field()
+    segment_data_type = scrapy.Field()
+    segment_type_url = scrapy.Field()
+    segment_filterable = scrapy.Field()
+    segment_selectable = scrapy.Field()
+    segment_sortable = scrapy.Field()
+    segment_repeated = scrapy.Field()
+    
