@@ -27,22 +27,47 @@ class SegmentsSpider(scrapy.Spider):
     #     if next_page:
     #         yield scrapy.Request(response.urljoin(next_page), callback=self.parse)
     
+    # def parse(self, response):
+    #     # loop from 1 to 107
+    #     for i in range(1, 108):
+
+    #     yield scrapy.Request(response.urljoin(f"https://developers.google.com/google-ads/api/fields/v15/segments#{i}"), callback=self.parse_resource)
+    # write parse function to loop from 1 to 107 and yield scrapy.Request to each page
+    def parse(self, response):
+        for i in range(1, 108):
+            segment_url = f"https://developers.google.com/google-ads/api/fields/v15/segments#{i}"
+            yield scrapy.Request(segment_url, callback=self.parse_segments, meta={'index': i})
+            # yield scrapy.Request("https://developers.google.com/google-ads/api/fields/v15/segments", callback=self.parse_segments, meta={'index': i})             
+
+    # why this code does not loop through all the segments?
+    # answer: because the loop is in the parse function, not in the parse_segments function
+    # def parse(self, response):
+    #     # loop from 1 to 107
+    #     for i in range(1, 108):
+    #         yield scrapy.Request(response.urljoin(f"https://developers.google.com/google-ads/api/fields/v15/segments#{i}"), callback=self.parse_segments, meta={'index': i})
+    
+
     def parse_segments(self, response):
         item = SegmentsItem()
-        item['segment_name'] = response.css('.devsite-article-body > h1::text').extract_first()
-        item['segment_field_description'] = response.css('.devsite-article-body > p:nth-child(2)::text').extract_first()
-        item['segment_category'] = response.css('.devsite-article-body > p:nth-child(3)::text').extract_first()
-        item['segment_data_type'] = response.css('.devsite-article-body > p:nth-child(4)::text').extract_first()
-        item['segment_type_url'] = response.css('.devsite-article-body > p:nth-child(5) > a::attr(href)').extract_first()
-        item['segment_filterable'] = response.css('.devsite-article-body > p:nth-child(6)::text').extract_first()
-        item['segment_selectable'] = response.css('.devsite-article-body > p:nth-child(7)::text').extract_first()
-        item['segment_sortable'] = response.css('.devsite-article-body > p:nth-child(8)::text').extract_first()
-        item['segment_repeated'] = response.css('.devsite-article-body > p:nth-child(9)::text').extract_first()
-
+        i = response.meta.get('index', None)
+        # Create a selector for each element
+        selector_segment_name = f"//h2[@tabindex='-1'][{i}]/text()"
+        selector_segment_field_description = f"//table[@class='orange responsive'][{i}]/tr[2]/td[2]/text()"
+        selector_segment_category = f"//table[@class='orange responsive'][{i}]/tr[3]/td[2]/code/text()"
+        selector_segment_data_type = f"//table[@class='orange responsive'][{i}]/tr[4]/td[2]/code/text()"
+        selector_segment_type_url = f"//table[@class='orange responsive'][{i}]/tr[5]/td[2]/code/text()"
+        selector_segment_filterable = f"//table[@class='orange responsive'][{i}]/tr[6]/td[2]/text()"
+        selector_segment_selectable = f"//table[@class='orange responsive'][{i}]/tr[7]/td[2]/text()"
+        selector_segment_sortable = f"//table[@class='orange responsive'][{i}]/tr[8]/td[2]/text()"
+        selector_segment_repeated = f"//table[@class='orange responsive'][{i}]/tr[9]/td[2]/text()"
+        item['segment_name'] = response.xpath(selector_segment_name).get()
+        item['segment_field_description'] = response.xpath(selector_segment_field_description).get()
+        item['segment_category'] = response.xpath(selector_segment_category).get()
+        item['segment_data_type'] = response.xpath(selector_segment_data_type).get()
+        item['segment_type_url'] = response.xpath(selector_segment_type_url).get()
+        item['segment_filterable'] = response.xpath(selector_segment_filterable).get()
+        item['segment_selectable'] = response.xpath(selector_segment_selectable).get()
+        item['segment_sortable'] = response.xpath(selector_segment_sortable).get()
+        item['segment_repeated'] = response.xpath(selector_segment_repeated).get()
         yield item
 
-
-# response.xpath("//div[2]/devsite-filter/div[@class='devsite-table-wrapper']/table/tbody[@class='list']/tr[1]/td/div/table/tbody/tr[2]/td[2]/text()").get()
-# https://developers.google.com/google-ads/api/fields/v15/segments
-response.css("div:nth-child(2) devsite-filter div.devsite-table-wrapper table tbody.list tr:nth-child(1) td div table tbody tr:nth-child(2) td:nth-child(2)::attr(text)").get()
-response.css("div:nth-child(2) > devsite-filter > div.devsite-table-wrapper > table >  tbody.list > tr:nth-child(1) > td > div > table > tbody > tr:nth-child(2) > td:nth-child(2)::attr(text)").get()

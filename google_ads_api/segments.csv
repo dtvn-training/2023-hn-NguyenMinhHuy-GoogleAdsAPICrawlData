@@ -1,0 +1,2 @@
+segment_category,segment_data_type,segment_field_description,segment_filterable,segment_name,segment_repeated,segment_selectable,segment_sortable,segment_type_url
+SEGMENT,INT64,Activity account ID.,True,segments.activity_account_id,False,True,True,N/A

@@ -32,6 +32,7 @@ class ResourceGoogleAdsSpider(scrapy.Spider):
         i = response.meta.get('index', None)
         # Create a selector for each element
         selector2 = f"body > section > devsite-book-nav > nav > div.devsite-book-nav-wrapper > div.devsite-mobile-nav-bottom > ul > li > div > ul > li:nth-child(1) > div > ul > li:nth-child(3) > div > ul > li:nth-child({i}) > a > span"
+        
         item['resource_name'] = response.css(selector2 + "::text").extract_first()
         item['description'] = response.css('.devsite-article-body > p:nth-child(2)::text').extract_first()
         if response.xpath("//table[@class='columns blue responsive']/thead/tr/th/text()").extract_first() == "Attributed resources":
