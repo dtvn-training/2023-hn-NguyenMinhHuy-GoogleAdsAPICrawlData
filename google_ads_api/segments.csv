@@ -1,2 +1,108 @@
 segment_category,segment_data_type,segment_field_description,segment_filterable,segment_name,segment_repeated,segment_selectable,segment_sortable,segment_type_url
 SEGMENT,INT64,Activity account ID.,True,segments.activity_account_id,False,True,True,N/A
+SEGMENT,INT64,Activity rating.,True,segments.activity_rating,False,True,True,N/A
+SEGMENT,ENUM,Ad Destination type.,True,segments.ad_destination_type,False,True,True,google.ads.googleads.v15.enums.AdDestinationTypeEnum.AdDestinationType
+SEGMENT,RESOURCE_NAME,Resource name of the ad group.,True,segments.ad_group,False,True,False,N/A
+SEGMENT,ENUM,Ad network type.,True,segments.ad_network_type,False,True,True,google.ads.googleads.v15.enums.AdNetworkTypeEnum.AdNetworkType
+SEGMENT,RESOURCE_NAME,Resource name of the asset group.,True,segments.asset_group,False,True,False,N/A
+SEGMENT,RESOURCE_NAME,The asset resource name.,True,segments.asset_interaction_target.asset,False,True,True,N/A
+SEGMENT,BOOLEAN,"Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction metrics occurred on the asset itself or a different asset or ad unit.",True,segments.asset_interaction_target.interaction_on_this_asset,False,True,True,N/A
+SEGMENT,STRING,Domain (visible URL) of a participant in the Auction Insights report.,False,segments.auction_insight_domain,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,The campaign resource name.,True,segments.budget_campaign_association_status.campaign,False,True,True,N/A
+SEGMENT,ENUM,Budget campaign association status.,True,segments.budget_campaign_association_status.status,False,True,True,google.ads.googleads.v15.enums.BudgetCampaignAssociationStatusEnum.BudgetCampaignAssociationStatus
+SEGMENT,RESOURCE_NAME,Resource name of the campaign.,True,segments.campaign,False,True,False,N/A
+SEGMENT,ENUM,Click type.,True,segments.click_type,False,True,True,google.ads.googleads.v15.enums.ClickTypeEnum.ClickType
+SEGMENT,RESOURCE_NAME,Resource name of the conversion action.,True,segments.conversion_action,False,True,True,N/A
+SEGMENT,ENUM,Conversion action category.,True,segments.conversion_action_category,False,True,True,google.ads.googleads.v15.enums.ConversionActionCategoryEnum.ConversionActionCategory
+SEGMENT,STRING,Conversion action name.,True,segments.conversion_action_name,False,True,True,N/A
+SEGMENT,BOOLEAN,This segments your conversion columns by the original conversion and conversion value versus the delta if conversions were adjusted. False row has the data as originally stated; While true row has the delta between data now and the data as originally stated. Summing the two together results post-adjustment data.,True,segments.conversion_adjustment,False,True,True,N/A
+SEGMENT,ENUM,Conversion attribution event type.,True,segments.conversion_attribution_event_type,False,True,True,google.ads.googleads.v15.enums.ConversionAttributionEventTypeEnum.ConversionAttributionEventType
+SEGMENT,ENUM,An enum value representing the number of days between the impression and the conversion.,True,segments.conversion_lag_bucket,False,True,True,google.ads.googleads.v15.enums.ConversionLagBucketEnum.ConversionLagBucket
+SEGMENT,ENUM,An enum value representing the number of days between the impression and the conversion or between the impression and adjustments to the conversion.,True,segments.conversion_or_adjustment_lag_bucket,False,True,True,google.ads.googleads.v15.enums.ConversionOrAdjustmentLagBucketEnum.ConversionOrAdjustmentLagBucket
+SEGMENT,ENUM,"Primary dimension of applied conversion value rules. NO_RULE_APPLIED shows the total recorded value of conversions that do not have a value rule applied. ORIGINAL shows the original value of conversions to which a value rule has been applied. GEO_LOCATION, DEVICE, AUDIENCE show the net adjustment after value rules were applied.",True,segments.conversion_value_rule_primary_dimension,False,True,True,google.ads.googleads.v15.enums.ConversionValueRulePrimaryDimensionEnum.ConversionValueRulePrimaryDimension
+SEGMENT,DATE,"Date to which metrics apply. yyyy-MM-dd format, for example, 2018-04-17.",True,segments.date,False,True,True,N/A
+SEGMENT,ENUM,"Day of the week, for example, MONDAY.",True,segments.day_of_week,False,True,True,google.ads.googleads.v15.enums.DayOfWeekEnum.DayOfWeek
+SEGMENT,ENUM,Device to which metrics apply.,True,segments.device,False,True,True,google.ads.googleads.v15.enums.DeviceEnum.Device
+SEGMENT,STRING,Advertiser supplied activity ID.,True,segments.external_activity_id,False,True,True,N/A
+SEGMENT,ENUM,External conversion source.,True,segments.external_conversion_source,False,True,True,google.ads.googleads.v15.enums.ExternalConversionSourceEnum.ExternalConversionSource
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents an airport.,True,segments.geo_target_airport,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a canton.,True,segments.geo_target_canton,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a city.,True,segments.geo_target_city,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a country.,True,segments.geo_target_country,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a county.,True,segments.geo_target_county,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a district.,True,segments.geo_target_district,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a metro.,True,segments.geo_target_metro,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents the most specific location.,True,segments.geo_target_most_specific_location,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a postal code.,True,segments.geo_target_postal_code,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a province.,True,segments.geo_target_province,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a region.,True,segments.geo_target_region,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant that represents a state.,True,segments.geo_target_state,False,True,True,N/A
+SEGMENT,INT64,Hotel booking window in days.,True,segments.hotel_booking_window_days,False,True,True,N/A
+SEGMENT,INT64,Hotel center ID.,True,segments.hotel_center_id,False,True,True,N/A
+SEGMENT,DATE,Hotel check-in date. Formatted as yyyy-MM-dd.,True,segments.hotel_check_in_date,False,True,True,N/A
+SEGMENT,ENUM,Hotel check-in day of week.,True,segments.hotel_check_in_day_of_week,False,True,True,google.ads.googleads.v15.enums.DayOfWeekEnum.DayOfWeek
+SEGMENT,RESOURCE_NAME,Hotel city.,True,segments.hotel_city,False,True,True,N/A
+SEGMENT,INT32,Hotel class.,True,segments.hotel_class,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Hotel country.,True,segments.hotel_country,False,True,True,N/A
+SEGMENT,ENUM,Hotel date selection type.,True,segments.hotel_date_selection_type,False,True,True,google.ads.googleads.v15.enums.HotelDateSelectionTypeEnum.HotelDateSelectionType
+SEGMENT,INT32,Hotel length of stay.,True,segments.hotel_length_of_stay,False,True,True,N/A
+SEGMENT,ENUM,Hotel price bucket.,True,segments.hotel_price_bucket,False,True,True,google.ads.googleads.v15.enums.HotelPriceBucketEnum.HotelPriceBucket
+SEGMENT,STRING,Hotel rate rule ID.,True,segments.hotel_rate_rule_id,False,True,True,N/A
+SEGMENT,ENUM,Hotel rate type.,True,segments.hotel_rate_type,False,True,True,google.ads.googleads.v15.enums.HotelRateTypeEnum.HotelRateType
+SEGMENT,RESOURCE_NAME,Hotel state.,True,segments.hotel_state,False,True,True,N/A
+SEGMENT,INT32,"Hour of day as a number between 0 and 23, inclusive.",True,segments.hour,False,True,True,N/A
+SEGMENT,BOOLEAN,Only used with feed item metrics. Indicates whether the interaction metrics occurred on the feed item itself or a different extension or ad unit.,True,segments.interaction_on_this_extension,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,The AdGroupCriterion resource name.,True,segments.keyword.ad_group_criterion,False,True,False,N/A
+SEGMENT,ENUM,The match type of the keyword.,True,segments.keyword.info.match_type,False,True,True,google.ads.googleads.v15.enums.KeywordMatchTypeEnum.KeywordMatchType
+SEGMENT,STRING,The text of the keyword (at most 80 characters and 10 words).,True,segments.keyword.info.text,False,True,True,N/A
+SEGMENT,DATE,Month as represented by the date of the first day of a month. Formatted as yyyy-MM-dd.,True,segments.month,False,True,True,N/A
+SEGMENT,ENUM,"Month of the year, for example, January.",True,segments.month_of_year,False,True,True,google.ads.googleads.v15.enums.MonthOfYearEnum.MonthOfYear
+SEGMENT,ENUM,This is for segmenting conversions by whether the user is a new customer or a returning customer. This segmentation is typically used to measure the impact of customer acquisition goal.,True,segments.new_versus_returning_customers,False,True,True,google.ads.googleads.v15.enums.ConvertingUserPriorEngagementTypeAndLtvBucketEnum.ConvertingUserPriorEngagementTypeAndLtvBucket
+SEGMENT,STRING,Partner hotel ID.,True,segments.partner_hotel_id,False,True,True,N/A
+SEGMENT,ENUM,Placeholder type. This is only used with feed item metrics.,True,segments.placeholder_type,False,True,True,google.ads.googleads.v15.enums.PlaceholderTypeEnum.PlaceholderType
+SEGMENT,INT64,Aggregator ID of the product.,True,segments.product_aggregator_id,False,True,True,N/A
+SEGMENT,STRING,Brand of the product.,True,segments.product_brand,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Category (level 1) of the product.,True,segments.product_category_level1,False,True,False,N/A
+SEGMENT,RESOURCE_NAME,Category (level 2) of the product.,True,segments.product_category_level2,False,True,False,N/A
+SEGMENT,RESOURCE_NAME,Category (level 3) of the product.,True,segments.product_category_level3,False,True,False,N/A
+SEGMENT,RESOURCE_NAME,Category (level 4) of the product.,True,segments.product_category_level4,False,True,False,N/A
+SEGMENT,RESOURCE_NAME,Category (level 5) of the product.,True,segments.product_category_level5,False,True,False,N/A
+SEGMENT,ENUM,Channel of the product.,True,segments.product_channel,False,True,True,google.ads.googleads.v15.enums.ProductChannelEnum.ProductChannel
+SEGMENT,ENUM,Channel exclusivity of the product.,True,segments.product_channel_exclusivity,False,True,True,google.ads.googleads.v15.enums.ProductChannelExclusivityEnum.ProductChannelExclusivity
+SEGMENT,ENUM,Condition of the product.,True,segments.product_condition,False,True,True,google.ads.googleads.v15.enums.ProductConditionEnum.ProductCondition
+SEGMENT,RESOURCE_NAME,Resource name of the geo target constant for the country of sale of the product.,True,segments.product_country,False,True,True,N/A
+SEGMENT,STRING,Custom attribute 0 of the product.,True,segments.product_custom_attribute0,False,True,True,N/A
+SEGMENT,STRING,Custom attribute 1 of the product.,True,segments.product_custom_attribute1,False,True,True,N/A
+SEGMENT,STRING,Custom attribute 2 of the product.,True,segments.product_custom_attribute2,False,True,True,N/A
+SEGMENT,STRING,Custom attribute 3 of the product.,True,segments.product_custom_attribute3,False,True,True,N/A
+SEGMENT,STRING,Custom attribute 4 of the product.,True,segments.product_custom_attribute4,False,True,True,N/A
+SEGMENT,STRING,Feed label of the product.,True,segments.product_feed_label,False,True,True,N/A
+SEGMENT,STRING,Item ID of the product.,True,segments.product_item_id,False,True,True,N/A
+SEGMENT,RESOURCE_NAME,Resource name of the language constant for the language of the product.,True,segments.product_language,False,True,True,N/A
+SEGMENT,INT64,Merchant ID of the product.,True,segments.product_merchant_id,False,True,True,N/A
+SEGMENT,STRING,Store ID of the product.,True,segments.product_store_id,False,True,True,N/A
+SEGMENT,STRING,Title of the product.,True,segments.product_title,False,True,True,N/A
+SEGMENT,STRING,Type (level 1) of the product.,True,segments.product_type_l1,False,True,True,N/A
+SEGMENT,STRING,Type (level 2) of the product.,True,segments.product_type_l2,False,True,True,N/A
+SEGMENT,STRING,Type (level 3) of the product.,True,segments.product_type_l3,False,True,True,N/A
+SEGMENT,STRING,Type (level 4) of the product.,True,segments.product_type_l4,False,True,True,N/A
+SEGMENT,STRING,Type (level 5) of the product.,True,segments.product_type_l5,False,True,True,N/A
+SEGMENT,DATE,"Quarter as represented by the date of the first day of a quarter. Uses the calendar year for quarters, for example, the second quarter of 2018 starts on 2018-04-01. Formatted as yyyy-MM-dd.",True,segments.quarter,False,True,True,N/A
+SEGMENT,ENUM,Recommendation type.,True,segments.recommendation_type,False,True,True,google.ads.googleads.v15.enums.RecommendationTypeEnum.RecommendationType
+SEGMENT,ENUM,Type of the search engine results page.,True,segments.search_engine_results_page_type,False,True,True,google.ads.googleads.v15.enums.SearchEngineResultsPageTypeEnum.SearchEngineResultsPageType
+SEGMENT,STRING,A search term subcategory. An empty string denotes the catch-all subcategory for search terms that didn't fit into another subcategory.,True,segments.search_subcategory,False,True,False,N/A
+SEGMENT,STRING,A search term.,True,segments.search_term,False,True,False,N/A
+SEGMENT,ENUM,"Match type of the keyword that triggered the ad, including variants.",True,segments.search_term_match_type,False,True,True,google.ads.googleads.v15.enums.SearchTermMatchTypeEnum.SearchTermMatchType
+SEGMENT,ENUM,iOS Store Kit Ad Network ad event type.,True,segments.sk_ad_network_ad_event_type,False,True,True,google.ads.googleads.v15.enums.SkAdNetworkAdEventTypeEnum.SkAdNetworkAdEventType
+SEGMENT,ENUM,iOS Store Kit Ad Network attribution credit,True,segments.sk_ad_network_attribution_credit,False,True,True,google.ads.googleads.v15.enums.SkAdNetworkAttributionCreditEnum.SkAdNetworkAttributionCredit
+SEGMENT,ENUM,iOS Store Kit Ad Network coarse conversion value.,True,segments.sk_ad_network_coarse_conversion_value,False,True,True,google.ads.googleads.v15.enums.SkAdNetworkCoarseConversionValueEnum.SkAdNetworkCoarseConversionValue
+SEGMENT,INT64,"iOS Store Kit Ad Network conversion value. Null value means this segment is not applicable, for example, non-iOS campaign.",True,segments.sk_ad_network_conversion_value,False,True,True,N/A
+SEGMENT,INT64,iOS Store Kit Ad Network postback sequence index.,True,segments.sk_ad_network_postback_sequence_index,False,True,True,N/A
+SEGMENT,STRING,App id where the ad that drove the iOS Store Kit Ad Network install was shown.,True,segments.sk_ad_network_source_app.sk_ad_network_source_app_id,False,True,True,N/A
+SEGMENT,STRING,"Website where the ad that drove the iOS Store Kit Ad Network install was shown. Null value means this segment is not applicable, for example, non-iOS campaign, or was not present in any postbacks sent by Apple.",True,segments.sk_ad_network_source_domain,False,True,True,N/A
+SEGMENT,ENUM,"The source type where the ad that drove the iOS Store Kit Ad Network install was shown. Null value means this segment is not applicable, for example, non-iOS campaign, or neither source domain nor source app were present in any postbacks sent by Apple.",True,segments.sk_ad_network_source_type,False,True,True,google.ads.googleads.v15.enums.SkAdNetworkSourceTypeEnum.SkAdNetworkSourceType
+SEGMENT,ENUM,iOS Store Kit Ad Network user type.,True,segments.sk_ad_network_user_type,False,True,True,google.ads.googleads.v15.enums.SkAdNetworkUserTypeEnum.SkAdNetworkUserType
+SEGMENT,ENUM,Position of the ad.,True,segments.slot,False,True,True,google.ads.googleads.v15.enums.SlotEnum.Slot
+SEGMENT,RESOURCE_NAME,Resource name of the ad group criterion that represents webpage criterion.,True,segments.webpage,False,True,False,N/A
+SEGMENT,DATE,"Week as defined as Monday through Sunday, and represented by the date of Monday. Formatted as yyyy-MM-dd.",True,segments.week,False,True,True,N/A
+SEGMENT,INT32,"Year, formatted as yyyy.",True,segments.year,False,True,True,N/A
