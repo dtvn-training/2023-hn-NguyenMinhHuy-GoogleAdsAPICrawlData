@@ -1,16 +1,3 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
-
-# import scrapy
-
-
-# class GoogleAdsApiItem(scrapy.Item):
-#     # define the fields for your item here like:
-#     # name = scrapy.Field()
-#     pass
-
 import scrapy
 
 class GoogleAdsApiItem(scrapy.Item):
@@ -39,3 +26,14 @@ class MetricsItem(scrapy.Item):
     metric_selectable = scrapy.Field()
     metric_sortable = scrapy.Field()
     metric_repeated = scrapy.Field()
+
+class AttributesItem(scrapy.Item):
+    attribute_name = scrapy.Field()
+    attribute_field_description = scrapy.Field()
+    attribute_category = scrapy.Field()
+    attribute_data_type = scrapy.Field()
+    attribute_type_url = scrapy.Field()
+    attribute_filterable = scrapy.Field()
+    attribute_selectable = scrapy.Field()
+    attribute_sortable = scrapy.Field()
+    attribute_repeated = scrapy.Field()

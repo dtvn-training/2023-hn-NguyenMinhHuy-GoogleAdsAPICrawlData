@@ -1,59 +1,59 @@
 attributed_resource,description,resource_name
-customer,An asset field type view. This view reports non-overcounted metrics for each asset field type when the asset is used as extension.,Asset Field Type View
-customer,An asset group. AssetGroupAsset is used to link an asset to the asset group. AssetGroupSignal is used to associate a signal to an asset group.,Asset Group
-customer,An asset set type view. This view reports non-overcounted metrics for each asset set type. Child asset set types are not included in this report. Their stats are aggregated under the parent asset set type.,Asset Set Type View
-"asset,asset_set,customer",AssetSetAsset is the link between an asset and an asset set. Adding an AssetSetAsset links an asset with an asset set.,Asset Set Asset
-"accessible_bidding_strategy,ad_group,ad_group_criterion,bidding_strategy,campaign,customer",An age range view.,Age Range View
-"accessible_bidding_strategy,bidding_strategy,campaign,customer",An ad group.,Ad Group
-customer,A bidding strategy.,Bidding Strategy
-"asset_group,asset_group_listing_group_filter,campaign,customer",An asset group product group view.,Asset Group Product Group View
-"campaign,campaign_criterion,customer",An ad schedule view summarizes the performance of campaigns by AdSchedule criteria.,Ad Schedule View
-"asset,customer",A link between an ad group and an asset.,Ad Group Asset
-"ad_group,ad_group_criterion,campaign,customer","An ad group audience view. Includes performance data from interests and remarketing lists for Display Network and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated at the audience level.",Ad Group Audience View
-"ad_group,campaign,customer",An ad group ad.,Ad Group Ad
-"asset,customer",A link between a customer and an asset.,Customer Asset
-"ad_group,ad_group_criterion,campaign,customer",A webpage view.,Webpage View
-"ad_group,ad_group_ad,campaign,customer","A view on the usage of ad group ad asset combination. Now we only support AdGroupAdAssetCombinationView for Responsive Search Ads, with more ad types planned for the future.",Ad Group Ad Asset Combination View
-customer,A video.,Video
-"ad_group,ad_group_criterion,campaign,customer",A travel activity group view.,Travel Activity Group View
-customer,"A user location view. User Location View includes all metrics aggregated at the country level, one row per country. It reports metrics at the actual physical location of the user by targeted or not targeted location. If other segment fields are used, you may get more than one row per country.",User Location View
-None,A travel activity performance view.,Travel Activity Performance View
-"campaign,customer",A Smart campaign search term view.,Smart Campaign Search Term View
-None,A customer.,Customer
-"ad_group,ad_group_ad,asset,campaign,customer",A link between an AdGroupAd and an Asset. Currently we only support AdGroupAdAssetView for AppAds and Responsive Search Ads.,Ad Group Ad Asset View
-"ad_group,ad_group_criterion,campaign,customer",A topic view.,Topic View
-customer,"Shopping performance view. Provides Shopping campaign statistics aggregated at several product dimension levels. Product dimension values from Merchant Center such as brand, category, custom attributes, product condition and product type will reflect the state of each dimension as of the date and time when the corresponding event was recorded.",Shopping Performance View
-"accessible_bidding_strategy,ad_group,ad_group_criterion,bidding_strategy,campaign,customer",A parental status view.,Parental Status View
-"ad_group,campaign,customer",A search term view with metrics aggregated by search term at the ad group level.,Search Term View
-"ad_group,ad_group_criterion,campaign,customer",A product group view.,Product Group View
-customer,A per store view. This view provides per store impression reach and local action conversion stats for advertisers.,Per Store View
-"campaign,campaign_criterion,customer",A location view summarizes the performance of campaigns by Location criteria.,Location View
-"ad_group,ad_group_criterion,campaign,customer",A managed placement view.,Managed Placement View
-None,A hotel performance view.,Hotel Performance View
-customer,A landing page view with metrics aggregated at the unexpanded final URL level.,Landing Page View
-"ad_group,ad_group_criterion,campaign,customer",An income range view.,Income Range View
-"campaign,customer",A hotel reconciliation. It contains conversion information from Hotel bookings to reconcile with advertiser records. These rows may be updated or canceled before billing through Bulk Uploads.,Hotel Reconciliation
-"accessible_bidding_strategy,ad_group,ad_group_criterion,bidding_strategy,campaign,customer",A keyword view.,Keyword View
-"ad_group,campaign,customer",A paid organic search term view providing a view of search stats across ads and organic listings aggregated by search term at the ad group level.,Paid Organic Search Term View
-"ad_group,ad_group_criterion,campaign,customer",A hotel group view.,Hotel Group View
-"ad_group,campaign,customer",A group placement view.,Group Placement View
-"ad_group,ad_group_criterion,campaign,customer",A gender view.,Gender View
-customer,"A geographic view. Geographic View includes all metrics aggregated at the country level, one row per country. It reports metrics at either actual physical location of the user or an area of interest. If other segment fields are used, you may get more than one row per country.",Geographic View
-"customer,feed",A feed item.,Feed Item
-customer,An extension feed item.,Extension Feed Item
-customer,A distance view with metrics aggregated by the user's distance from an advertiser's location extensions. Each DistanceBucket includes all impressions that fall within its distance and a single impression will contribute to the metrics for all DistanceBuckets that include the user's distance.,Distance View
-customer,A landing page view with metrics aggregated at the expanded final URL level.,Expanded Landing Page View
-customer,A feed placeholder view.,Feed Placeholder View
-"ad_group,campaign,customer",A dynamic search ads search term view.,Dynamic Search Ads Search Term View
-"ad_group,ad_group_criterion,campaign,customer",A display keyword view.,Display Keyword View
-None,A Customer search term view. Historical data is available starting March 2023.,Customer Search Term Insight
-"ad_group,campaign,customer",A view with metrics aggregated by ad group and URL or YouTube video.,Detail Placement View
-customer,"A click view with metrics aggregated at each click level, including both valid and invalid clicks. For non-Search campaigns, metrics.clicks represents the number of valid and invalid interactions. Queries including ClickView must have a filter limiting the results to one day and can be requested for dates back to 90 days before the time of the request.",Click View
-"campaign,customer",A Campaign search term view. Historical data is available starting March 2023.,Campaign Search Term Insight
-"campaign,customer",Represents a bid-modifiable only criterion at the campaign level.,Campaign Bid Modifier
-customer,A conversion action.,Conversion Action
-"asset,customer",A link between a Campaign and an Asset.,Campaign Asset
-customer,A campaign budget shared amongst various budget recommendation types.,Campaign Budget
-"campaign,campaign_criterion,customer","A campaign audience view. Includes performance data from interests and remarketing lists for Display Network and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated by campaign and audience criterion. This view only includes audiences attached at the campaign level.",Campaign Audience View
-"accessible_bidding_strategy,bidding_strategy,campaign_budget,campaign_group,customer",A campaign.,Campaign
-customer,A campaign group.,Campaign Group
+"campaign,customer",<p>Represents a bid-modifiable only criterion at the campaign level.</p>,Campaign Bid Modifier
+"accessible_bidding_strategy,bidding_strategy,campaign,customer",<p>An ad group.</p>,Ad Group
+"asset,customer",<p>A link between a Campaign and an Asset.</p>,Campaign Asset
+customer,<p>A campaign group.</p>,Campaign Group
+"accessible_bidding_strategy,bidding_strategy,campaign_budget,campaign_group,customer",<p>A campaign.</p>,Campaign
+"campaign,customer",<p>A Campaign search term view. Historical data is available starting March 2023.</p>,Campaign Search Term Insight
+"campaign,campaign_criterion,customer","<p>A campaign audience view. Includes performance data from interests and remarketing lists for Display Network and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated by campaign and audience criterion. This view only includes audiences attached at the campaign level.</p>",Campaign Audience View
+customer,<p>A campaign budget shared amongst various budget recommendation types.</p>,Campaign Budget
+"asset,asset_set,customer",<p>AssetSetAsset is the link between an asset and an asset set. Adding an AssetSetAsset links an asset with an asset set.</p>,Asset Set Asset
+customer,<p>A bidding strategy.</p>,Bidding Strategy
+customer,<p>An asset set type view. This view reports non-overcounted metrics for each asset set type. Child asset set types are not included in this report. Their stats are aggregated under the parent asset set type.</p>,Asset Set Type View
+"accessible_bidding_strategy,ad_group,ad_group_criterion,bidding_strategy,campaign,customer",<p>An age range view.</p>,Age Range View
+customer,<p>An asset field type view. This view reports non-overcounted metrics for each asset field type when the asset is used as extension.</p>,Asset Field Type View
+"campaign,campaign_criterion,customer",<p>An ad schedule view summarizes the performance of campaigns by AdSchedule criteria.</p>,Ad Schedule View
+customer,<p>An asset group. AssetGroupAsset is used to link an asset to the asset group. AssetGroupSignal is used to associate a signal to an asset group.</p>,Asset Group
+"asset_group,asset_group_listing_group_filter,campaign,customer",<p>An asset group product group view.</p>,Asset Group Product Group View
+None,<p>A travel activity performance view.</p>,Travel Activity Performance View
+"ad_group,ad_group_criterion,campaign,customer",<p>A travel activity group view.</p>,Travel Activity Group View
+"ad_group,ad_group_criterion,campaign,customer",<p>A webpage view.</p>,Webpage View
+customer,"<p>A user location view. User Location View includes all metrics aggregated at the country level, one row per country. It reports metrics at the actual physical location of the user by targeted or not targeted location. If other segment fields are used, you may get more than one row per country.</p>",User Location View
+"ad_group,ad_group_criterion,campaign,customer",<p>A topic view.</p>,Topic View
+"campaign,customer",<p>A Smart campaign search term view.</p>,Smart Campaign Search Term View
+customer,"<p>Shopping performance view. Provides Shopping campaign statistics aggregated at several product dimension levels. Product dimension values from Merchant Center such as brand, category, custom attributes, product condition and product type will reflect the state of each dimension as of the date and time when the corresponding event was recorded.</p>",Shopping Performance View
+"accessible_bidding_strategy,ad_group,ad_group_criterion,bidding_strategy,campaign,customer",<p>A parental status view.</p>,Parental Status View
+customer,<p>A per store view. This view provides per store impression reach and local action conversion stats for advertisers.</p>,Per Store View
+customer,<p>A video.</p>,Video
+"ad_group,ad_group_criterion,campaign,customer",<p>A product group view.</p>,Product Group View
+"ad_group,campaign,customer",<p>A search term view with metrics aggregated by search term at the ad group level.</p>,Search Term View
+"campaign,campaign_criterion,customer",<p>A location view summarizes the performance of campaigns by Location criteria.</p>,Location View
+"ad_group,ad_group_criterion,campaign,customer",<p>A managed placement view.</p>,Managed Placement View
+"ad_group,campaign,customer",<p>A paid organic search term view providing a view of search stats across ads and organic listings aggregated by search term at the ad group level.</p>,Paid Organic Search Term View
+customer,<p>A landing page view with metrics aggregated at the unexpanded final URL level.</p>,Landing Page View
+"ad_group,ad_group_criterion,campaign,customer",<p>An income range view.</p>,Income Range View
+"accessible_bidding_strategy,ad_group,ad_group_criterion,bidding_strategy,campaign,customer",<p>A keyword view.</p>,Keyword View
+"campaign,customer",<p>A hotel reconciliation. It contains conversion information from Hotel bookings to reconcile with advertiser records. These rows may be updated or canceled before billing through Bulk Uploads.</p>,Hotel Reconciliation
+"ad_group,campaign,customer",<p>A group placement view.</p>,Group Placement View
+"customer,feed",<p>A feed item.</p>,Feed Item
+customer,<p>An extension feed item.</p>,Extension Feed Item
+"ad_group,ad_group_criterion,campaign,customer",<p>A gender view.</p>,Gender View
+customer,<p>A landing page view with metrics aggregated at the expanded final URL level.</p>,Expanded Landing Page View
+customer,"<p>A geographic view. Geographic View includes all metrics aggregated at the country level, one row per country. It reports metrics at either actual physical location of the user or an area of interest. If other segment fields are used, you may get more than one row per country.</p>",Geographic View
+customer,<p>A feed placeholder view.</p>,Feed Placeholder View
+"ad_group,ad_group_criterion,campaign,customer",<p>A hotel group view.</p>,Hotel Group View
+None,<p>A hotel performance view.</p>,Hotel Performance View
+"ad_group,ad_group_criterion,campaign,customer",<p>A display keyword view.</p>,Display Keyword View
+"ad_group,campaign,customer",<p>A dynamic search ads search term view.</p>,Dynamic Search Ads Search Term View
+"ad_group,campaign,customer",<p>A view with metrics aggregated by ad group and URL or YouTube video.</p>,Detail Placement View
+None,<p>A Customer search term view. Historical data is available starting March 2023.</p>,Customer Search Term Insight
+"asset,customer",<p>A link between a customer and an asset.</p>,Customer Asset
+customer,"<p>A click view with metrics aggregated at each click level, including both valid and invalid clicks. For non-Search campaigns, metrics.clicks represents the number of valid and invalid interactions. Queries including ClickView must have a filter limiting the results to one day and can be requested for dates back to 90 days before the time of the request.</p>",Click View
+customer,<p>A distance view with metrics aggregated by the user's distance from an advertiser's location extensions. Each DistanceBucket includes all impressions that fall within its distance and a single impression will contribute to the metrics for all DistanceBuckets that include the user's distance.</p>,Distance View
+customer,<p>A conversion action.</p>,Conversion Action
+None,<p>A customer.</p>,Customer
+"ad_group,ad_group_ad,asset,campaign,customer",<p>A link between an AdGroupAd and an Asset. Currently we only support AdGroupAdAssetView for AppAds and Responsive Search Ads.</p>,Ad Group Ad Asset View
+"asset,customer",<p>A link between an ad group and an asset.</p>,Ad Group Asset
+"ad_group,ad_group_ad,campaign,customer","<p>A view on the usage of ad group ad asset combination. Now we only support AdGroupAdAssetCombinationView for Responsive Search Ads, with more ad types planned for the future.</p>",Ad Group Ad Asset Combination View
+"ad_group,ad_group_criterion,campaign,customer","<p>An ad group audience view. Includes performance data from interests and remarketing lists for Display Network and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated at the audience level.</p>",Ad Group Audience View
+"ad_group,campaign,customer",<p>An ad group ad.</p>,Ad Group Ad

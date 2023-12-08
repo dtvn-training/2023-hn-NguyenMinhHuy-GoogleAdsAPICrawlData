@@ -14,7 +14,7 @@ class MetricsSpider(scrapy.Spider):
         for i in range(1, 175):
             item = MetricsItem()
             selector_metric_name = f"(//table[@class='green responsive']/tr/th/h2[@tabindex='-1'])[{i}]/text()"
-            selector_metric_field_description = f"(//table[@class='green responsive']/tr[2]/td[2])[{i}]/text()"
+            selector_metric_field_description = f"(//table[@class='green responsive']/tr[2]/td[2])[{i}]" # Field description often contains tags other than text, we will get all of it and then process to get only the text later
             selector_metric_category = f"(//table[@class='green responsive']/tr[3]/td[2]/code)[{i}]/text()"
             selector_metric_data_type = f"(//table[@class='green responsive']/tr[4]/td[2]/code)[{i}]/text()"
             selector_metric_type_url = f"(//table[@class='green responsive']/tr[5]/td[2]/code)[{i}]/text()"

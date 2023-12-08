@@ -1,0 +1,114 @@
+attributed_resource,description,resource_name
+customer,"<p>Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy, this resource includes strategies owned by managers of the customer and shared with this customer - in addition to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset of the BiddingStrategy attributes.</p>",Accessible Bidding Strategy
+"ad_group,campaign,customer,language_constant,mobile_app_category_constant,topic_constant,user_interest,user_list",<p>An ad group criterion.</p>,Ad Group Criterion
+"ad_group,ad_group_criterion,campaign,customer,label",<p>A relationship between an ad group criterion and a label.</p>,Ad Group Criterion Label
+"ad_group,campaign,customer,customizer_attribute",<p>A customizer value for the associated CustomizerAttribute at the AdGroup level.</p>,Ad Group Customizer
+"ad_group,ad_group_criterion,campaign,customer,customizer_attribute",<p>A customizer value for the associated CustomizerAttribute at the AdGroupCriterion level.</p>,Ad Group Criterion Customizer
+"ad_group,campaign,customer",<p>An ad group extension setting.</p>,Ad Group Extension Setting
+"ad_group,campaign,customer",<p>Represents an ad group bid modifier.</p>,Ad Group Bid Modifier
+customer,<p>Represents the data sharing connection between a Google Ads account and another account</p>,Account Link
+"ad_group,ad_group_criterion,campaign,customer","<p>An ad group criterion simulation. Supported combinations of advertising channel type, criterion type, simulation type, and simulation modification method are detailed below respectively. Hotel AdGroupCriterion simulation operations starting in V5. 1. DISPLAY - KEYWORD - CPC_BID - UNIFORM 2. SEARCH - KEYWORD - CPC_BID - UNIFORM 3. SHOPPING - LISTING_GROUP - CPC_BID - UNIFORM 4. HOTEL - LISTING_GROUP - CPC_BID - UNIFORM 5. HOTEL - LISTING_GROUP - PERCENT_CPC_BID - UNIFORM</p>",Ad Group Criterion Simulation
+"ad_group,ad_group_ad,campaign,customer,label",<p>A relationship between an ad group ad and a label.</p>,Ad Group Ad Label
+"ad_group,campaign,customer,feed",<p>An ad group feed.</p>,Ad Group Feed
+"billing_setup,customer","<p>An account-level budget. It contains information about the budget itself, as well as the most recently approved changes to the budget and proposed changes that are pending approval. The proposed changes that are pending approval, if any, are found in 'pending_proposal'. Effective details about the budget are found in fields prefixed 'approved_', 'adjusted_' and those without a prefix. Since some effective details may differ from what the user had originally requested (for example, spending limit), these differences are juxtaposed through 'proposed_', 'approved_', and possibly 'adjusted_' fields. This resource is mutated using AccountBudgetProposal and cannot be mutated directly. A budget may have at most one pending proposal at any given time. It is read through pending_proposal. Once approved, a budget may be subject to adjustments, such as credit adjustments. Adjustments create differences between the 'approved' and 'adjusted' fields, which would otherwise be identical.</p>",Account Budget
+"billing_setup,customer","<p>An account-level budget proposal. All fields prefixed with 'proposed' may not necessarily be applied directly. For example, proposed spending limits may be adjusted before their application. This is true if the 'proposed' field has an 'approved' counterpart, for example, spending limits. Note that the proposal type (proposal_type) changes which fields are required and which must remain empty.</p>",Account Budget Proposal
+"asset_group,campaign,customer",<p>AssetGroupListingGroupFilter represents a listing group filter tree node in an asset group.</p>,Asset Group Listing Group Filter
+customer,<p>A user list. This is a list of users a customer may target.</p>,User List
+"ad_group,asset_set,campaign,customer",<p>AdGroupAssetSet is the linkage between an ad group and an asset set. Creating an AdGroupAssetSet links an asset set with an ad group.</p>,Ad Group Asset Set
+None,<p>A user interest: a particular interest-based vertical to be targeted.</p>,User Interest
+"campaign,customer",<p>Settings for configuring Smart campaigns.</p>,Smart Campaign Setting
+"asset,asset_group,campaign,customer",<p>AssetGroupAsset is the link between an asset and an asset group. Adding an AssetGroupAsset links an asset with an asset group.</p>,Asset Group Asset
+"customer,mobile_app_category_constant,shared_set",<p>A criterion belonging to a shared set.</p>,Shared Criterion
+customer,<p>SharedSets are used for sharing criterion exclusions across multiple campaigns.</p>,Shared Set
+"account_link,customer","<p>A data sharing connection, allowing the import of third party app analytics into a Google Ads Customer.</p>",Third Party App Analytics Link
+customer,<p>Recommendation Subscription resource</p>,Recommendation Subscription
+customer,"<p>A remarketing action. A snippet of JavaScript code that will collect the product id and the type of page people visited (product page, shopping cart page, purchase page, general site visit) on an advertiser's website.</p>",Remarketing Action
+None,<p>Qualifying Questions for Lead Form.</p>,Qualifying Question
+None,<p>A Product Category.</p>,Product Category Constant
+customer,<p>Represents the data sharing connection between a Google Ads customer and another product.</p>,Product Link
+None,"<p>Use topics to target or exclude placements in the Google Display Network based on the category into which the placement falls (for example, ""Pets &amp; Animals/Pets/Dogs"").</p>",Topic Constant
+customer,<p>Represents an invitation for data sharing connection between a Google Ads account and another account.</p>,Product Link Invitation
+None,"<p>A mobile operating system version or a range of versions, depending on <code translate=""no"" dir=""ltr"">operator_type</code>. List of available mobile platforms at <a href=""https://developers.google.com/google-ads/api/reference/data/codes-formats#mobile-platforms"">https://developers.google.com/google-ads/api/reference/data/codes-formats#mobile-platforms</a></p>",Operating System Version Constant
+"customer,user_list","<p>A job containing offline user data of store visitors, or user list members that will be processed asynchronously. The uploaded data isn't readable and the processing results of the job can only be read using GoogleAdsService.Search/SearchStream.</p>",Offline User Data Job
+"ad_group,campaign,campaign_budget,customer",<p>A recommendation.</p>,Recommendation
+None,<p>A mobile application category constant.</p>,Mobile App Category Constant
+None,<p>A mobile device constant.</p>,Mobile Device Constant
+customer,<p>A media file.</p>,Media File
+customer,<p>A local services verification resource.</p>,Local Services Verification Artifact
+customer,<p>Offline conversion upload client summary.</p>,Offline Conversion Upload Client Summary
+"customer,local_services_lead","<p>Data from Local Services Lead Conversation. Contains details of Lead Conversation which is generated when user calls, messages or books service from advertiser. These are appended to a Lead. More info: <a href=""https://ads.google.com/local-services-ads"">https://ads.google.com/local-services-ads</a></p>",Local Services Lead Conversation
+None,<p>A life event: a particular interest-based vertical to be targeted to reach users when they are in the midst of important life milestones.</p>,Life Event
+None,<p>A Smart Campaign keyword theme constant.</p>,Keyword Theme Constant
+None,<p>A language.</p>,Language Constant
+customer,"<p>Data from Local Services Lead. Contains details of Lead which is generated when user calls, messages or books service from advertiser. More info: <a href=""https://ads.google.com/local-services-ads"">https://ads.google.com/local-services-ads</a></p>",Local Services Lead
+"ad_group,ad_group_ad,asset,campaign,customer",<p>Data from lead form submissions.</p>,Lead Form Submission Data
+"customer,keyword_plan",<p>A Keyword Plan campaign. Max number of keyword plan campaigns per plan allowed: 1.</p>,Keyword Plan Campaign
+"customer,keyword_plan,keyword_plan_campaign",<p>A Keyword Plan Campaign keyword. Only negative keywords are supported for Campaign Keyword.</p>,Keyword Plan Campaign Keyword
+"customer,keyword_plan,keyword_plan_ad_group,keyword_plan_campaign",<p>A Keyword Plan ad group keyword. Max number of keyword plan keywords per plan: 10000.</p>,Keyword Plan Ad Group Keyword
+None,<p>A geo target constant.</p>,Geo Target Constant
+customer,<p>A Keyword Planner plan. Max number of saved keyword plans: 10000. It's possible to remove plans if limit is reached.</p>,Keyword Plan
+customer,<p>A label.</p>,Label
+"customer,feed",<p>A feed mapping.</p>,Feed Mapping
+"ad_group,campaign,customer,feed,feed_item",<p>A feed item target.</p>,Feed Item Target
+"customer,keyword_plan,keyword_plan_campaign",<p>A Keyword Planner ad group. Max number of keyword plan ad groups per plan: 200.</p>,Keyword Plan Ad Group
+"customer,feed,feed_item,feed_item_set",<p>Represents a link between a FeedItem and a FeedItemSet.</p>,Feed Item Set Link
+customer,<p>A feed.</p>,Feed
+"customer,feed","<p>Represents a set of feed items. The set can be used and shared among certain feed item features. For instance, the set can be referenced within the matching functions of CustomerFeed, CampaignFeed, and AdGroupFeed.</p>",Feed Item Set
+"campaign,customer","<p>A category generated automatically by crawling a domain. If a campaign uses the DynamicSearchAdsSetting, then domain categories will be generated for the domain. The categories can be targeted using WebpageConditionInfo. See: <a href=""https://support.google.com/google-ads/answer/2471185"">https://support.google.com/google-ads/answer/2471185</a></p>",Domain Category
+"customer,experiment","<p>A Google ads experiment for users to experiment changes on multiple campaigns, compare the performance, and apply the effective changes.</p>",Experiment Arm
+customer,"<p>A Google ads experiment for users to experiment changes on multiple campaigns, compare the performance, and apply the effective changes.</p>",Experiment
+customer,<p>A detailed demographic: a particular interest-based vertical to be targeted to reach users based on long-term life facts.</p>,Detailed Demographic
+customer,<p>Represent an invitation to a new user on this customer account.</p>,Customer User Access Invitation
+customer,"<p>A customizer attribute. Use CustomerCustomizer, CampaignCustomizer, AdGroupCustomizer, or AdGroupCriterionCustomizer to associate a customizer attribute and set its value at the customer, campaign, ad group, or ad group criterion level, respectively.</p>",Customizer Attribute
+"customer,mobile_app_category_constant,shared_set",<p>A negative criterion for exclusions at the customer level.</p>,Customer Negative Criterion
+customer,<p>Represents the permission of a single user onto a single customer.</p>,Customer User Access
+customer,<p>Represents customer-manager link relationship.</p>,Customer Manager Link
+customer,<p>Represents a relationship between a customer and a label. This customer may not have access to all the labels attached to it. Additional CustomerLabels may be returned by increasing permissions with login-customer-id.</p>,Customer Label
+"customer,feed",<p>A customer feed.</p>,Customer Feed
+customer,<p>Account level customer lifecycle goal settings.</p>,Customer Lifecycle Goal
+"customer,customizer_attribute",<p>A customizer value for the associated CustomizerAttribute at the Customer level.</p>,Customer Customizer
+customer,<p>Biddability control for conversion actions with a matching category and origin.</p>,Customer Conversion Goal
+customer,<p>Represents customer client link relationship.</p>,Customer Client Link
+customer,"<p>A link between the given customer and a client customer. CustomerClients only exist for manager customers. All direct and indirect client customers are included, as well as the manager itself.</p>",Customer Client
+customer,<p>A customer extension setting.</p>,Customer Extension Setting
+customer,<p>Custom conversion goal that can make arbitrary conversion actions biddable.</p>,Custom Conversion Goal
+customer,<p>A custom interest. This is a list of users by interest.</p>,Custom Interest
+customer,<p>A custom audience. This is a list of users by interest.</p>,Custom Audience
+customer,<p>A conversion value rule set</p>,Conversion Value Rule Set
+"asset_set,customer",<p>CustomerAssetSet is the linkage between a customer and an asset set. Adding a CustomerAssetSet links an asset set with a customer.</p>,Customer Asset Set
+None,<p>A currency constant.</p>,Currency Constant
+"campaign,custom_conversion_goal,customer",<p>Conversion goal settings for a Campaign.</p>,Conversion Goal Campaign Config
+None,<p>A carrier criterion that can be used in campaign targeting.</p>,Carrier Constant
+"ad_group,asset,campaign,combined_audience,customer,feed,feed_item,shared_set",<p>Describes the status of returned resource. ChangeStatus could have up to 3 minutes delay to reflect a new change.</p>,Change Status
+customer,"<p>A conversion custom variable See ""About custom variables for conversions"" at <a href=""https://support.google.com/google-ads/answer/9964350"">https://support.google.com/google-ads/answer/9964350</a></p>",Conversion Custom Variable
+"ad_group,asset,campaign,customer,feed,feed_item",<p>Describes the granular change of returned resources of certain resource types. Changes made through the UI or API in the past 30 days are included. Previous and new values of the changed fields are shown. ChangeEvent could have up to 3 minutes delay to reflect a new change.</p>,Change Event
+customer,<p>Describe a resource for combined audiences which includes different audiences.</p>,Combined Audience
+customer,<p>A conversion value rule</p>,Conversion Value Rule
+"campaign,customer","<p>A campaign simulation. Supported combinations of advertising channel type, simulation type and simulation modification method is detailed below respectively. * SEARCH - CPC_BID - UNIFORM * SEARCH - CPC_BID - SCALING * SEARCH - TARGET_CPA - UNIFORM * SEARCH - TARGET_CPA - SCALING * SEARCH - TARGET_ROAS - UNIFORM * SEARCH - TARGET_IMPRESSION_SHARE - UNIFORM * SEARCH - BUDGET - UNIFORM * SHOPPING - BUDGET - UNIFORM * SHOPPING - TARGET_ROAS - UNIFORM * MULTI_CHANNEL - TARGET_CPA - UNIFORM * DISCOVERY - TARGET_CPA - DEFAULT * DISPLAY - TARGET_CPA - UNIFORM * PERFORMANCE_MAX - TARGET_CPA - UNIFORM * PERFORMANCE_MAX - TARGET_ROAS - UNIFORM * PERFORMANCE_MAX - BUDGET - UNIFORM</p>",Campaign Simulation
+"campaign,customer,shared_set",<p>CampaignSharedSets are used for managing the shared sets associated with a campaign.</p>,Campaign Shared Set
+customer,<p>Campaign level customer lifecycle goal settings.</p>,Campaign Lifecycle Goal
+"campaign,customer",<p>A campaign draft.</p>,Campaign Draft
+"campaign,customer,feed",<p>A campaign feed.</p>,Campaign Feed
+"campaign,customer",<p>A campaign extension setting.</p>,Campaign Extension Setting
+"campaign,customer,customizer_attribute",<p>A customizer value for the associated CustomizerAttribute at the Campaign level.</p>,Campaign Customizer
+"campaign,carrier_constant,customer,feed,language_constant,mobile_app_category_constant,mobile_device_constant,operating_system_version_constant,shared_set,topic_constant,user_interest,user_list",<p>A campaign criterion.</p>,Campaign Criterion
+"campaign,customer,label",<p>Represents a relationship between a campaign and a label.</p>,Campaign Label
+customer,"<p>A billing setup, which associates a payments account and an advertiser. A billing setup is specific to one advertiser.</p>",Billing Setup
+"ad_group,campaign,customer",<p>A call view that includes data for call tracking of call-only ads or call extensions.</p>,Call View
+"asset_set,campaign,customer",<p>CampaignAssetSet is the linkage between a campaign and an asset set. Adding a CampaignAssetSet links an asset set with a campaign.</p>,Campaign Asset Set
+customer,"<p>Represents a bidding data exclusion. See ""About data exclusions"" at <a href=""https://support.google.com/google-ads/answer/10370710"">https://support.google.com/google-ads/answer/10370710</a>.</p>",Bidding Data Exclusion
+customer,"<p>Represents a bidding seasonality adjustment. See ""About seasonality adjustments"" at <a href=""https://support.google.com/google-ads/answer/10369906"">https://support.google.com/google-ads/answer/10369906</a>.</p>",Bidding Seasonality Adjustment
+"campaign,customer",<p>The biddability setting for the specified campaign only for all conversion actions with a matching category and origin.</p>,Campaign Conversion Goal
+"bidding_strategy,customer",<p>A bidding strategy simulation. Supported combinations of simulation type and simulation modification method are detailed below respectively. 1. TARGET_CPA - UNIFORM 2. TARGET_ROAS - UNIFORM</p>,Bidding Strategy Simulation
+customer,<p>A list of mutates being processed asynchronously. The mutates are uploaded by the user. The mutates themselves aren't readable and the results of the job can only be read using BatchJobService.ListBatchJobResults.</p>,Batch Job
+"asset_group,customer","<p>Audience is an effective targeting option that lets you intersect different segment attributes, such as detailed demographics and affinities, to create audiences that represent sections of your target segments.</p>",Audience
+customer,<p>An asset set representing a collection of assets. Use AssetSetAsset to link an asset to the asset set.</p>,Asset Set
+"asset_group,campaign,customer",<p>A view on the usage of ad group ad asset combination.</p>,Asset Group Top Combination View
+customer,<p>An Android privacy shared key view for Google network type key.</p>,Android Privacy Shared Key Google Network Type
+"asset_group,campaign,customer","<p>AssetGroupSignal represents a signal in an asset group. The existence of a signal tells the performance max campaign who's most likely to convert. Performance Max uses the signal to look for new people with similar or stronger intent to find conversions across Search, Display, Video, and more.</p>",Asset Group Signal
+customer,"<p>Asset is a part of an ad which can be shared across multiple ads. It can be an image (ImageAsset), a video (YoutubeVideoAsset), etc. Assets are immutable and cannot be removed. To stop an asset from serving, remove the asset from the entity that is using it.</p>",Asset
+customer,<p>An Android privacy shared key view for Google ad group key.</p>,Android Privacy Shared Key Google Ad Group
+customer,<p>An Android privacy shared key view for Google campaign key.</p>,Android Privacy Shared Key Google Campaign
+"ad_group,ad_group_criterion,campaign,customer","<p>An ad parameter that is used to update numeric values (such as prices or inventory levels) in any text line of an ad (including URLs). There can be a maximum of two AdParameters per ad group criterion. (One with parameter_index = 1 and one with parameter_index = 2.) In the ad the parameters are referenced by a placeholder of the form ""{param#:value}"". For example, ""{param1:$17}""</p>",Ad Parameter
+"ad_group,campaign,customer","<p>An ad group simulation. Supported combinations of advertising channel type, simulation type and simulation modification method is detailed below respectively. 1. SEARCH - CPC_BID - DEFAULT 2. SEARCH - CPC_BID - UNIFORM 3. SEARCH - TARGET_CPA - UNIFORM 4. SEARCH - TARGET_ROAS - UNIFORM 5. DISPLAY - CPC_BID - DEFAULT 6. DISPLAY - CPC_BID - UNIFORM 7. DISPLAY - TARGET_CPA - UNIFORM</p>",Ad Group Simulation
+"ad_group,campaign,customer,label",<p>A relationship between an ad group and a label.</p>,Ad Group Label
