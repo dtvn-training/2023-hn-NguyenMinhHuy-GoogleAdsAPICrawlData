@@ -40,4 +40,14 @@ class ResourceWithoutMetricsSpider(scrapy.Spider):
             item['attributed_resource'] = response.xpath("(//tbody[@class='list'])[1]/tr/td/a/text()").extract()  
         else:
             item['attributed_resource'] = "None"
+        
+        if response.xpath("//table[@class='columns orange responsive']/thead/tr/th/text()").extract_first() == "Segmenting resources":
+            item['segmenting_resource'] = response.xpath("(//tbody[@class='list'])[2]/tr/td/a/text()").extract()  
+        else:
+            item['segmenting_resource'] = "None"
+        
+        item['list_attributes'] = response.xpath("//table[@class='blue responsive']/tr/th/h2[@tabindex='-1']/text()").extract() # This is a list of all attributes
+        item['list_segments'] = "None"
+        item['list_metrics'] = "None"
+        item['with_metrics'] = 0
         yield item

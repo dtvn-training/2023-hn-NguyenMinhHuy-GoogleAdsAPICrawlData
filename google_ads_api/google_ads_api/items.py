@@ -4,6 +4,12 @@ class GoogleAdsApiItem(scrapy.Item):
     resource_name = scrapy.Field()
     description =scrapy.Field()
     attributed_resource = scrapy.Field()
+    segmenting_resource = scrapy.Field()
+    with_metrics = scrapy.Field()
+    list_attributes = scrapy.Field()  # List of attributes (resource fields)
+    list_segments = scrapy.Field()
+    list_metrics = scrapy.Field()
+    
 
 class SegmentsItem(scrapy.Item):
     segment_name = scrapy.Field()

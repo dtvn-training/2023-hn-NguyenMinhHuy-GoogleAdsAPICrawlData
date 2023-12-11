@@ -35,8 +35,44 @@ class ResourceGoogleAdsSpider(scrapy.Spider):
         
         item['resource_name'] = response.css(selector2 + "::text").extract_first()
         item['description'] = response.css('.devsite-article-body > p:nth-child(2)').extract_first() #        item['description'] = response.css('.devsite-article-body > p:nth-child(2)::text').extract_first()
+        
         if response.xpath("//table[@class='columns blue responsive']/thead/tr/th/text()").extract_first() == "Attributed resources":
             item['attributed_resource'] = response.xpath("(//tbody[@class='list'])[1]/tr/td/a/text()").extract()  
         else:
             item['attributed_resource'] = "None"
+
+        if response.xpath("//table[@class='columns orange responsive']/thead/tr/th/text()").extract_first() == "Segmenting resources":
+            item['segmenting_resource'] = response.xpath("(//tbody[@class='list'])[2]/tr/td/a/text()").extract()  
+        else:
+            item['segmenting_resource'] = "None"
+        
+        if response.xpath("//table[@class='columns blue responsive']/thead/tr/th/text()").extract_first() == "Attributed resources":
+            item['list_attributes'] = response.xpath("(//table[@class='columns blue responsive'])[2]/tbody/tr/td/a/text()").extract()
+        else:
+            item['list_attributes'] = response.xpath("//table[@class='columns blue responsive']/tbody/tr/td/a/text()").extract()
+
+        if response.xpath("//table[@class='columns orange responsive']/thead/tr/th/text()").extract_first() == "Segmenting resources":
+            item['list_segments'] = response.xpath("(//table[@class='columns orange responsive'])[2]/tbody/tr/td/a/text()").extract()
+        else:
+            item['list_segments'] = response.xpath("//table[@class='columns orange responsive']/tbody/tr/td/a/text()").extract()
+
+        if response.xpath("//table[@class='columns green responsive']/thead/tr/th/text()").extract_first() == "Metric resources":
+            item['list_metrics'] = response.xpath("(//table[@class='columns green responsive'])[2]/tbody/tr/td/a/text()").extract()
+        else:
+            item['list_metrics'] = response.xpath("//table[@class='columns green responsive']/tbody/tr/td/a/text()").extract()
+
+        item['with_metrics'] = 1
         yield item
+
+
+
+# if "fields" in response.xpath("//table[@class='columns blue responsive']/thead/tr/th/text()").extract()[1]:
+#     item['list_attributes'] = response.xpath("//table[@class='columns blue responsive']/tbody/tr/td/a/text()").extract()
+# elif "fields" in response.xpath("//table[@class='columns blue responsive']/thead/tr/th/text()").extract()[2]:
+#     item['list_attributes'] = response.xpath("//table[@class='columns blue responsive']/tbody/tr/td/a/text()").extract()
+# elif "fields" in response.xpath("(//table[@class='columns blue responsive'])[2]/thead/tr/th/text()").extract()[1]:
+#     item['list_attributes'] = response.xpath("(//table[@class='columns blue responsive'])[2]/tbody/tr/td/a/text()").extract()
+# elif "fields" in response.xpath("(//table[@class='columns blue responsive'])[2]/thead/tr/th/text()").extract()[2]:
+#     item['list_attributes'] = response.xpath("(//table[@class='columns blue responsive'])[2]/tbody/tr/td/a/text()").extract()
+# else:
+#     item['list_attributes'] = "None"
