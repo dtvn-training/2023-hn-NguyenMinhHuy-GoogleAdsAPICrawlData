@@ -17,7 +17,7 @@ segments_file_path = 'google_ads_api/processed/segment.csv'
 attributes_file_path = 'google_ads_api/processed/attribute.csv'
 
 
-def create_table(db_config):
+def create_table(db_config): # this function create table in mysql database
     try:
         # Establish MySQL database connection
         connection = mysql.connector.connect(**db_config)
@@ -180,7 +180,7 @@ def create_table(db_config):
     except Error as e:
         print(f"Error: {e}")
 
-def load_csv_to_mysql(csv_file, table_name, db_config):
+def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load csv to mysql database 
 
     try:
         # Read CSV file into a pandas DataFrame
@@ -289,13 +289,13 @@ def load_csv_to_mysql(csv_file, table_name, db_config):
                 if result:
                     resource_id_1 = result[0]
 
-                    # Assuming 'attributed_resource' is a column containing a list of attributed resources
+                    # Assuming 'segmenting_resources' is a column containing a list of segmenting resources
                     segmenting_resources = row['segmenting_resource'].split(',')
 
-                    # Insert pairs into attributed_resources table
+                    # Insert pairs into segmenting_resources table
                     for segmenting_resource in segmenting_resources:
-                        # Retrieve resource_id_2 based on 'attributed_resource'
-                        if segmenting_resource: # Check if attributed_resource is not empty
+                        # Retrieve resource_id_2 based on 'segmenting_resource'
+                        if segmenting_resource: # Check if segmenting_resource is not empty
                             cursor.execute("SELECT id FROM resources WHERE name = %s", (segmenting_resource.strip(),))
                             result = cursor.fetchone()
 
@@ -303,7 +303,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):
                             if result:
                                 resource_id_2 = result[0]
 
-                                # Insert into attributed_resources table
+                                # Insert into segmenting_resources table
                                 insert_query_segmenting_resources = """
                                 INSERT INTO segmenting_resources (resource_id_1, resource_id_2)
                                 VALUES (%s, %s);
@@ -315,36 +315,121 @@ def load_csv_to_mysql(csv_file, table_name, db_config):
                 else:
                     print(f"Resource '{row['resource_name']}' not found.")
 
-            # elif (table_name == 'resources_attributes'):
-            #     # Insert into resources_attributes table
-            #     insert_query_resources_attributes = """
-            #     INSERT INTO resources_attributes (resources_id, attributes_id)
-            #     VALUES (%d, %d);
-            #     """
-            #     data_resources_attributes = (
-            #         row['resources_id'], row['attributes_id']
-            #     )
-            #     cursor.execute(insert_query_resources_attributes, data_resources_attributes)
-            # elif (table_name == 'resources_metrics'):
-            #     # Insert into resources_metrics table
-            #     insert_query_resources_metrics = """
-            #     INSERT INTO resources_metrics (resources_id, metrics_id)
-            #     VALUES (%d, %d);
-            #     """
-            #     data_resources_metrics = (
-            #         row['resources_id'], row['metrics_id']
-            #     )
-            #     cursor.execute(insert_query_resources_metrics, data_resources_metrics)
-            # elif (table_name == 'resources_segments'):
-            #     # Insert into resources_segments table
-            #     insert_query_resources_segments = """
-            #     INSERT INTO resources_segments (resources_id, segments_id)
-            #     VALUES (%d, %d);
-            #     """
-            #     data_resources_segments = (
-            #         row['resources_id'], row['segments_id']
-            #     )
-            #     cursor.execute(insert_query_resources_segments, data_resources_segments)
+            elif table_name == 'resources_attributes':
+                # Assuming 'resource_name' is a column in your DataFrame
+                # Retrieve resources_id based on 'resource_name'
+                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
+                result = cursor.fetchone()
+
+                # Check if a row is returned
+                if result:
+                    resources_id = result[0] # resources_id is the id of the resource
+
+                    # Assuming 'attributes' is a column containing a list of attributes
+                    attributes = row['list_attributes'].split(',')
+
+                    # Insert pairs into attrbutes table
+                    for attribute in attributes:
+                        # Retrieve attribute_id based on 'attribute'
+                        if attribute: # Check if attribute is not empty
+                            # if attribute.strip() does not already have the resource name, add it
+                            check_resource_name = row['resource_name'] + "." 
+                            if attribute.strip().find(check_resource_name) == -1:  
+                                attribute = row['resource_name'] + "." + attribute.strip()
+                                cursor.execute("SELECT id FROM attributes WHERE name = %s", (attribute,))
+                            else:
+                                cursor.execute("SELECT id FROM attributes WHERE name = %s", (attribute.strip(),))
+                            result = cursor.fetchone()
+
+                            # Check if a row is returned
+                            if result:
+                                attributes_id = result[0]
+                                # Insert into attributes table
+                                insert_query_resources_attributes = """
+                                INSERT INTO resources_attributes (resources_id, attributes_id)
+                                VALUES (%s, %s);
+                                """
+                                data_resources_attributes = (resources_id, attributes_id)
+                                cursor.execute(insert_query_resources_attributes, data_resources_attributes)
+                            else:
+                                print(f"Resource '{attribute}' not found.")
+                else:
+                    print(f"Resource '{row['resource_name']}' not found.")
+
+
+            elif table_name == 'resources_metrics':
+                # Assuming 'resource_name' is a column in your DataFrame
+                # Retrieve resources_id based on 'resource_name'
+                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
+                result = cursor.fetchone()
+
+                # Check if a row is returned
+                if result:
+                    resources_id = result[0] # resources_id is the id of the resource
+
+                    # Assuming 'metrics' is a column containing a list of metrics
+                    metrics = row['list_metrics'].split(',')
+
+                    # Insert pairs into metrics table
+                    for metric in metrics:
+                        # Retrieve metrics_id based on 'metric'
+                        if metric: # Check if metric is not empty
+                            # add 'metrics.' to the beginning of the metric name
+                            metric = "metrics." + metric.strip()
+                            cursor.execute("SELECT id FROM metrics WHERE name = %s", (metric,))
+                            result = cursor.fetchone()
+
+                            # Check if a row is returned
+                            if result:
+                                metrics_id = result[0]
+                                # Insert into metrics table
+                                insert_query_resources_metrics = """
+                                INSERT INTO resources_metrics (resources_id, metrics_id)
+                                VALUES (%s, %s);
+                                """
+                                data_resources_metrics = (resources_id, metrics_id)
+                                cursor.execute(insert_query_resources_metrics, data_resources_metrics)
+                            else:
+                                print(f"Resource '{metric}' not found.")
+                else:
+                    print(f"Resource '{row['resource_name']}' not found.")
+
+            elif table_name == 'resources_segments':
+                # Assuming 'resource_name' is a column in your DataFrame
+                # Retrieve resources_id based on 'resource_name'
+                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
+                result = cursor.fetchone()
+
+                # Check if a row is returned
+                if result:
+                    resources_id = result[0] # resources_id is the id of the resource
+
+                    # Assuming 'segments' is a column containing a list of segments 
+                    segments = row['list_segments'].split(',')
+
+                    # Insert pairs into segments table
+                    for segment in segments:
+                        # Retrieve segments_id based on 'segment'
+                        if segment: # Check if segment is not empty
+                            # add 'segments.' to the beginning of the segment name
+                            segment = "segments." + segment.strip()
+                            cursor.execute("SELECT id FROM segments WHERE name = %s", (segment,))
+                            result = cursor.fetchone()
+
+                            # Check if a row is returned
+                            if result:
+                                segments_id = result[0]
+                                # Insert into segments table
+                                insert_query_resources_segments = """
+                                INSERT INTO resources_segments (resources_id, segments_id)
+                                VALUES (%s, %s);
+                                """
+                                data_resources_segments = (resources_id, segments_id)
+                                cursor.execute(insert_query_resources_segments, data_resources_segments)
+                            else:
+                                print(f"Resource '{segment}' not found.")
+                else:
+                    print(f"Resource '{row['resource_name']}' not found.")
             else:
                 print("Table name not found.")
 
@@ -373,13 +458,10 @@ load_csv_to_mysql(resources_file_path, 'attributed_resources', db_config)
 
 load_csv_to_mysql(resources_file_path, 'segmenting_resources', db_config)
 
-# # Load data into resources_attributes table
-# load_csv_to_mysql(resources_attributes_file_path, 'resources_attributes', db_config)
+load_csv_to_mysql(resources_file_path, 'resources_attributes', db_config)
 
-# # Load data into resources_metrics table
-# load_csv_to_mysql(resources_metrics_file_path, 'resources_metrics', db_config)
+load_csv_to_mysql(resources_file_path, 'resources_metrics', db_config)
 
-# # Load data into resources_segments table
-# load_csv_to_mysql(resources_segments_file_path, 'resources_segments', db_config)
+load_csv_to_mysql(resources_file_path, 'resources_segments', db_config)
 
 
