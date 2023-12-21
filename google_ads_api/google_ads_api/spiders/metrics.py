@@ -16,7 +16,10 @@ class MetricsSpider(scrapy.Spider):
             selector_metric_name = f"(//table[@class='green responsive']/tr/th/h2[@tabindex='-1'])[{i}]/text()"
             selector_metric_field_description = f"(//table[@class='green responsive']/tr[2]/td[2])[{i}]" # Field description often contains tags other than text, we will get all of it and then process to get only the text later
             selector_metric_category = f"(//table[@class='green responsive']/tr[3]/td[2]/code)[{i}]/text()"
+            
             selector_metric_data_type = f"(//table[@class='green responsive']/tr[4]/td[2]/code)[{i}]/text()"
+            selector_metric_data_type_enum = f"(//table[@class='green responsive']/tr[4]/td[2])[{i}]/code/section/div/text()"
+            
             selector_metric_type_url = f"(//table[@class='green responsive']/tr[5]/td[2]/code)[{i}]/text()"
             selector_metric_filterable = f"(//table[@class='green responsive']/tr[6]/td[2])[{i}]/text()"
             selector_metric_selectable = f"(//table[@class='green responsive']/tr[7]/td[2])[{i}]/text()"
@@ -28,7 +31,7 @@ class MetricsSpider(scrapy.Spider):
 
             # Check if the segment_data_type is ENUM
             if "\n" in response.xpath(selector_metric_data_type).get(): 
-                item['metric_data_type'] = "ENUM"
+                item['metric_data_type'] = response.xpath(selector_metric_data_type_enum).extract()
             else:
                 item['metric_data_type'] = response.xpath(selector_metric_data_type).get()
 
@@ -37,4 +40,5 @@ class MetricsSpider(scrapy.Spider):
             item['metric_selectable'] = response.xpath(selector_metric_selectable).get()
             item['metric_sortable'] = response.xpath(selector_metric_sortable).get()
             item['metric_repeated'] = response.xpath(selector_metric_repeated).get()
+            item['metric_selectable_with'] = None
             yield item

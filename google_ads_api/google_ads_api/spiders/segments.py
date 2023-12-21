@@ -16,19 +16,23 @@ class SegmentsSpider(scrapy.Spider):
             selector_segment_name = f"(//table[@class='orange responsive']/tr/th/h2[@tabindex='-1'])[{i}]/text()"
             selector_segment_field_description = f"(//table[@class='orange responsive']/tr[2]/td[2])[{i}]/text()"
             selector_segment_category = f"(//table[@class='orange responsive']/tr[3]/td[2]/code)[{i}]/text()"
+            
             selector_segment_data_type = f"(//table[@class='orange responsive']/tr[4]/td[2]/code)[{i}]/text()"
+            selector_segment_data_type_enum = f"(//table[@class='orange responsive']/tr[4]/td[2])[{i}]/code/section/div/text()"
+            
             selector_segment_type_url = f"(//table[@class='orange responsive']/tr[5]/td[2]/code)[{i}]/text()"
             selector_segment_filterable = f"(//table[@class='orange responsive']/tr[6]/td[2])[{i}]/text()"
             selector_segment_selectable = f"(//table[@class='orange responsive']/tr[7]/td[2])[{i}]/text()"
             selector_segment_sortable = f"(//table[@class='orange responsive']/tr[8]/td[2])[{i}]/text()"
             selector_segment_repeated = f"(//table[@class='orange responsive']/tr[9]/td[2])[{i}]/text()"
+            selector_segment_selectable_with = f"(//table[@class='orange responsive']/tr[10]/td[2])[{i}]/section/div/a/text()"
             item['segment_name'] = response.xpath(selector_segment_name).get()
             item['segment_field_description'] = response.xpath(selector_segment_field_description).get()
             item['segment_category'] = response.xpath(selector_segment_category).get()
 
             # Check if the segment_data_type is ENUM
             if "\n" in response.xpath(selector_segment_data_type).get(): 
-                item['segment_data_type'] = "ENUM"
+                item['segment_data_type'] = response.xpath(selector_segment_data_type_enum).extract()
             else:
                 item['segment_data_type'] = response.xpath(selector_segment_data_type).get()
 
@@ -37,4 +41,5 @@ class SegmentsSpider(scrapy.Spider):
             item['segment_selectable'] = response.xpath(selector_segment_selectable).get()
             item['segment_sortable'] = response.xpath(selector_segment_sortable).get()
             item['segment_repeated'] = response.xpath(selector_segment_repeated).get()
+            item['segment_selectable_with'] = response.xpath(selector_segment_selectable_with).extract()
             yield item

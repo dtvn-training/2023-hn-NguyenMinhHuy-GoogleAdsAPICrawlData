@@ -21,6 +21,7 @@ class SegmentsItem(scrapy.Item):
     segment_selectable = scrapy.Field()
     segment_sortable = scrapy.Field()
     segment_repeated = scrapy.Field()
+    segment_selectable_with = scrapy.Field()
     
 class MetricsItem(scrapy.Item):
     metric_name = scrapy.Field()
@@ -32,6 +33,7 @@ class MetricsItem(scrapy.Item):
     metric_selectable = scrapy.Field()
     metric_sortable = scrapy.Field()
     metric_repeated = scrapy.Field()
+    metric_selectable_with = scrapy.Field()
 
 class AttributesItem(scrapy.Item):
     attribute_name = scrapy.Field()
@@ -43,3 +45,4 @@ class AttributesItem(scrapy.Item):
     attribute_selectable = scrapy.Field()
     attribute_sortable = scrapy.Field()
     attribute_repeated = scrapy.Field()
+    attribute_selectable_with = scrapy.Field()
