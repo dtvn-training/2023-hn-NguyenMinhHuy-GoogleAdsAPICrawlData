@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>metric</name>
+    <name>attribute-without-metrics</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,43 +427,43 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2023/12/18 09:04:33.580</created_date>
+    <created_date>2023/12/18 09:01:02.010</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/12/18 09:04:33.580</modified_date>
-    <key_for_session_key/>
+    <modified_date>2023/12/18 09:01:02.010</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <order>
     <hop>
-      <from>CSV file input</from>
-      <to>Filter NULL value</to>
+      <from>CSV file input 2</from>
+      <to>Filter NULL value 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter NULL value</from>
-      <to>Remove HTML tags &amp; space</to>
+      <from>Change fields name 3</from>
+      <to>Change fields name 2 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove HTML tags &amp; space</from>
-      <to>Change fields name</to>
+      <from>Filter NULL value 2</from>
+      <to>Remove HTML tags &amp; space 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Change fields name</from>
-      <to>Change fields name 2</to>
+      <from>Remove HTML tags &amp; space 2</from>
+      <to>Change fields name 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Change fields name 2</from>
+      <from>Change fields name 2 2</from>
       <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>CSV file input</name>
+    <name>CSV file input 2</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -473,7 +473,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/metrics.csv</filename>
+    <filename>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/attributes_without_metrics.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -489,51 +489,7 @@
     <encoding/>
     <fields>
       <field>
-        <name>metric_category</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>6</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>metric_data_type</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>6</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>metric_field_description</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>568</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>metric_filterable</name>
-        <type>Boolean</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>metric_name</name>
+        <name>attribute_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
@@ -544,46 +500,101 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>metric_repeated</name>
-        <type>Boolean</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>metric_selectable</name>
-        <type>Boolean</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>metric_sortable</name>
-        <type>Boolean</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>metric_type_url</name>
+        <name>attribute_selectable_with</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>3</length>
+        <length>4</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_category</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>9</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_selectable</name>
+        <type>Boolean</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_field_description</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>589</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_data_type</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>13</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_filterable</name>
+        <type>Boolean</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_repeated</name>
+        <type>Boolean</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_sortable</name>
+        <type>Boolean</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>attribute_type_url</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>94</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -598,12 +609,168 @@
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>288</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter NULL value</name>
+    <name>Change fields name 2 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>attribute_filterable</name>
+      </field>
+      <field>
+        <name>attribute_repeated</name>
+      </field>
+      <field>
+        <name>attribute_selectable</name>
+      </field>
+      <field>
+        <name>attribute_sortable</name>
+      </field>
+      <field>
+        <name>attribute_selectable_with</name>
+      </field>
+      <field>
+        <name>attribute_field_description_</name>
+        <rename>attribute_field_description</rename>
+      </field>
+      <field>
+        <name>attribute_category_</name>
+        <rename>attribute_category</rename>
+      </field>
+      <field>
+        <name>attribute_data_type_</name>
+        <rename>attribute_data_type</rename>
+      </field>
+      <field>
+        <name>attribute_name_</name>
+        <rename>attribute_name</rename>
+      </field>
+      <field>
+        <name>attribute_type_url_</name>
+        <rename>attribute_type_url</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Change fields name 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>attribute_category</name>
+      </field>
+      <field>
+        <name>attribute_data_type</name>
+      </field>
+      <field>
+        <name>attribute_field_description</name>
+      </field>
+      <field>
+        <name>attribute_filterable</name>
+      </field>
+      <field>
+        <name>attribute_name</name>
+      </field>
+      <field>
+        <name>attribute_repeated</name>
+      </field>
+      <field>
+        <name>attribute_selectable</name>
+      </field>
+      <field>
+        <name>attribute_sortable</name>
+      </field>
+      <field>
+        <name>attribute_type_url</name>
+      </field>
+      <field>
+        <name>attribute_selectable_with</name>
+      </field>
+      <field>
+        <name>formatted_attribute_field_description</name>
+        <rename>attribute_field_description_</rename>
+      </field>
+      <field>
+        <name>formatted_attribute_category</name>
+        <rename>attribute_category_</rename>
+      </field>
+      <field>
+        <name>formatted_attribute_data_type</name>
+        <rename>attribute_data_type_</rename>
+      </field>
+      <field>
+        <name>formatted_attribute_name</name>
+        <rename>attribute_name_</rename>
+      </field>
+      <field>
+        <name>formatted_attribute_type_url</name>
+        <rename>attribute_type_url_</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>attribute_category</name>
+      </remove>
+      <remove>
+        <name>attribute_data_type</name>
+      </remove>
+      <remove>
+        <name>attribute_field_description</name>
+      </remove>
+      <remove>
+        <name>attribute_name</name>
+      </remove>
+      <remove>
+        <name>attribute_type_url</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter NULL value 2</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -613,7 +780,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Remove HTML tags &amp; space</send_true_to>
+    <send_true_to>Remove HTML tags &amp; space 2</send_true_to>
     <send_false_to/>
     <compare>
       <condition>
@@ -621,14 +788,14 @@
         <conditions>
           <condition>
             <negated>N</negated>
-            <leftvalue>metric_category</leftvalue>
+            <leftvalue>attribute_category</leftvalue>
             <function>IS NOT NULL</function>
             <rightvalue/>
           </condition>
           <condition>
             <negated>N</negated>
             <operator>AND</operator>
-            <leftvalue>metric_field_description</leftvalue>
+            <leftvalue>attribute_name</leftvalue>
             <function>IS NOT NULL</function>
             <rightvalue/>
           </condition>
@@ -645,12 +812,12 @@
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>288</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove HTML tags &amp; space</name>
+    <name>Remove HTML tags &amp; space 2</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -682,52 +849,52 @@ function removeTrailingSpaces(input) {
 	}
 }
 
-var formatted_metric_field_description = removeHtmlTags(metric_field_description);
+var formatted_attribute_field_description = removeHtmlTags(attribute_field_description);
 
-var formatted_metric_category = removeTrailingSpaces(metric_category);
-var formatted_metric_data_type = removeTrailingSpaces(metric_data_type);
-var formatted_metric_name = removeTrailingSpaces(metric_name);
-var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
+var formatted_attribute_category = removeTrailingSpaces(attribute_category);
+var formatted_attribute_data_type = removeTrailingSpaces(attribute_data_type);
+var formatted_attribute_name = removeTrailingSpaces(attribute_name);
+var formatted_attribute_type_url = removeTrailingSpaces(attribute_type_url);
 
 </jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
       <field>
-        <name>formatted_metric_field_description</name>
-        <rename>formatted_metric_field_description</rename>
+        <name>formatted_attribute_field_description</name>
+        <rename>formatted_attribute_field_description</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_metric_category</name>
-        <rename>formatted_metric_category</rename>
+        <name>formatted_attribute_category</name>
+        <rename>formatted_attribute_category</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_metric_data_type</name>
-        <rename>formatted_metric_data_type</rename>
+        <name>formatted_attribute_data_type</name>
+        <rename>formatted_attribute_data_type</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_metric_name</name>
-        <rename>formatted_metric_name</rename>
+        <name>formatted_attribute_name</name>
+        <rename>formatted_attribute_name</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_metric_type_url</name>
-        <rename>formatted_metric_type_url</rename>
+        <name>formatted_attribute_type_url</name>
+        <rename>formatted_attribute_type_url</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -743,8 +910,8 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>288</yloc>
+      <xloc>448</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -771,9 +938,9 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
     <endedLine/>
     <fileNameInField>N</fileNameInField>
     <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
+    <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/processed/metric</name>
+      <name>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/processed/attribute-without-metrics</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
@@ -791,7 +958,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
     </file>
     <fields>
       <field>
-        <name>metric_filterable</name>
+        <name>attribute_filterable</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -803,7 +970,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_repeated</name>
+        <name>attribute_repeated</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -815,7 +982,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_selectable</name>
+        <name>attribute_selectable</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -827,7 +994,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_sortable</name>
+        <name>attribute_sortable</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -839,7 +1006,19 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_field_description</name>
+        <name>attribute_selectable_with</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>4</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>attribute_field_description</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -851,7 +1030,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_category</name>
+        <name>attribute_category</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -863,7 +1042,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_data_type</name>
+        <name>attribute_data_type</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -875,7 +1054,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_name</name>
+        <name>attribute_name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -887,7 +1066,7 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
         <precision>-1</precision>
       </field>
       <field>
-        <name>metric_type_url</name>
+        <name>attribute_type_url</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -908,171 +1087,8 @@ var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Change fields name</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>metric_category</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_data_type</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_field_description</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_filterable</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_repeated</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_selectable</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_sortable</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_type_url</name>
-        <rename/>
-      </field>
-      <field>
-        <name>formatted_metric_field_description</name>
-        <rename>metric_field_description_</rename>
-      </field>
-      <field>
-        <name>formatted_metric_category</name>
-        <rename>metric_category_</rename>
-      </field>
-      <field>
-        <name>formatted_metric_data_type</name>
-        <rename>metric_data_type_</rename>
-      </field>
-      <field>
-        <name>formatted_metric_name</name>
-        <rename>metric_name_</rename>
-      </field>
-      <field>
-        <name>formatted_metric_type_url</name>
-        <rename>metric_type_url_</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>metric_category</name>
-      </remove>
-      <remove>
-        <name>metric_data_type</name>
-      </remove>
-      <remove>
-        <name>metric_field_description</name>
-      </remove>
-      <remove>
-        <name>metric_name</name>
-      </remove>
-      <remove>
-        <name>metric_type_url</name>
-      </remove>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Change fields name 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>metric_filterable</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_repeated</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_selectable</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_sortable</name>
-        <rename/>
-      </field>
-      <field>
-        <name>metric_field_description_</name>
-        <rename>metric_field_description</rename>
-      </field>
-      <field>
-        <name>metric_category_</name>
-        <rename>metric_category</rename>
-      </field>
-      <field>
-        <name>metric_data_type_</name>
-        <rename>metric_data_type</rename>
-      </field>
-      <field>
-        <name>metric_name_</name>
-        <rename>metric_name</rename>
-      </field>
-      <field>
-        <name>metric_type_url_</name>
-        <rename>metric_type_url</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>288</yloc>
+      <xloc>880</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -59,6 +59,6 @@ class AttributesSpider(scrapy.Spider):
                 item['attribute_selectable'] = response.xpath(selector_attribute_selectable).get()
                 item['attribute_sortable'] = response.xpath(selector_attribute_sortable).get()
                 item['attribute_repeated'] = response.xpath(selector_attribute_repeated).get()
-                item['attribute_selectable_with'] = None
+                item['attribute_selectable_with'] = "None"
                 yield item
                 i += 1

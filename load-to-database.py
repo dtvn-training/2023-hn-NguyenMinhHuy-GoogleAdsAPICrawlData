@@ -12,9 +12,7 @@ db_config = {
 
 # CSV file paths
 resources_file_path = 'google_ads_api/processed/resource-process.csv'
-metrics_file_path = 'google_ads_api/processed/metric.csv'
-segments_file_path = 'google_ads_api/processed/segment.csv'
-attributes_file_path = 'google_ads_api/processed/attribute.csv'
+fields_file_path = 'google_ads_api/processed/field.csv'
 
 
 def create_table(db_config): # this function create table in mysql database
@@ -36,35 +34,23 @@ def create_table(db_config): # this function create table in mysql database
         """
         ,
         """
-        DROP TABLE IF EXISTS segments CASCADE;
+        DROP TABLE IF EXISTS fields CASCADE;
         """
         ,
         """
-        DROP TABLE IF EXISTS metrics CASCADE;
+        DROP TABLE IF EXISTS resources_fields CASCADE;
         """
         ,
         """
-        DROP TABLE IF EXISTS attributes CASCADE;
+        DROP TABLE IF EXISTS segmenting_attributed_resources CASCADE;
         """
         ,
         """
-        DROP TABLE IF EXISTS resources_attributes CASCADE;
+        DROP TABLE IF EXISTS data_type CASCADE;
         """
         ,
         """
-        DROP TABLE IF EXISTS resources_metrics CASCADE;
-        """
-        ,
-        """
-        DROP TABLE IF EXISTS resources_segments CASCADE;
-        """
-        ,
-        """
-        DROP TABLE IF EXISTS attributed_resources CASCADE;
-        """
-        ,
-        """
-        DROP TABLE IF EXISTS segmenting_resources CASCADE;
+        DROP TABLE IF EXISTS selectable_with CASCADE;
         """
         ,
         """
@@ -75,13 +61,12 @@ def create_table(db_config): # this function create table in mysql database
             with_metrics TINYINT(1) NOT NULL DEFAULT 0
         );
         """,
-        """     
-        CREATE TABLE IF NOT EXISTS metrics (
+        """
+        CREATE TABLE IF NOT EXISTS fields (
             id INT AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(255) NOT NULL UNIQUE,
             description TEXT NOT NULL,
             category VARCHAR(255) NOT NULL,
-            data_type VARCHAR(255) NOT NULL,
             type_url TEXT NOT NULL,
             filterable VARCHAR(10) NOT NULL,
             selectable VARCHAR(10) NOT NULL,
@@ -91,90 +76,48 @@ def create_table(db_config): # this function create table in mysql database
         """
         ,
         """
-        CREATE TABLE IF NOT EXISTS segments (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL UNIQUE,
-            description TEXT NOT NULL,
-            category VARCHAR(255) NOT NULL,
-            data_type VARCHAR(255) NOT NULL,
-            type_url TEXT NOT NULL,
-            filterable VARCHAR(10) NOT NULL,
-            selectable VARCHAR(10) NOT NULL,
-            sortable VARCHAR(10) NOT NULL,
-            repeated VARCHAR(10) NOT NULL
-        );
-        """
-        ,
-        """
-        CREATE TABLE IF NOT EXISTS attributes (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL UNIQUE,
-            description TEXT NOT NULL,
-            category VARCHAR(255) NOT NULL,
-            data_type VARCHAR(255) NOT NULL,
-            type_url TEXT NOT NULL,
-            filterable VARCHAR(10) NOT NULL,
-            selectable VARCHAR(10) NOT NULL,
-            sortable VARCHAR(10) NOT NULL,
-            repeated VARCHAR(10) NOT NULL
-        );
-        """
-        ,
-        """
-        CREATE TABLE IF NOT EXISTS attributed_resources (
+        CREATE TABLE IF NOT EXISTS segmenting_attributed_resources (
             resource_id_1 INT NOT NULL,
             resource_id_2 INT NOT NULL,
-            PRIMARY KEY (resource_id_1, resource_id_2),
+            type VARCHAR(45) NOT NULL DEFAULT 'attributed_resources',
+            PRIMARY KEY (resource_id_1, resource_id_2, type),
             FOREIGN KEY (resource_id_1) REFERENCES resources(id),
             FOREIGN KEY (resource_id_2) REFERENCES resources(id)
         );
         """
+
         ,
         """
-        CREATE TABLE IF NOT EXISTS segmenting_resources (
-            resource_id_1 INT NOT NULL,
-            resource_id_2 INT NOT NULL,
-            PRIMARY KEY (resource_id_1, resource_id_2),
-            FOREIGN KEY (resource_id_1) REFERENCES resources(id),
-            FOREIGN KEY (resource_id_2) REFERENCES resources(id)
+        CREATE TABLE IF NOT EXISTS resources_fields (
+            resources_id INT NOT NULL,
+            fields_id INT NOT NULL,
+            PRIMARY KEY (resources_id, fields_id),
+            FOREIGN KEY (resources_id) REFERENCES resources(id),
+            FOREIGN KEY (fields_id) REFERENCES fields(id)
         );
         """
         ,
         """
-        CREATE TABLE IF NOT EXISTS resources_attributes (
-            resources_id INT NOT NULL,
-            attributes_id INT NOT NULL,
-            PRIMARY KEY (resources_id, attributes_id),
-            FOREIGN KEY (resources_id) REFERENCES resources(id),
-            FOREIGN KEY (attributes_id) REFERENCES attributes(id)
+        CREATE TABLE IF NOT EXISTS data_type (
+            field_id INT NOT NULL,
+            name VARCHAR(200) NOT NULL,
+            PRIMARY KEY (field_id, name),
+            FOREIGN KEY (field_id) REFERENCES fields(id)
         );
         """
         ,
         """
-        CREATE TABLE IF NOT EXISTS resources_metrics (
-            resources_id INT NOT NULL,
-            metrics_id INT NOT NULL,
-            PRIMARY KEY (resources_id, metrics_id),
-            FOREIGN KEY (resources_id) REFERENCES resources(id),
-            FOREIGN KEY (metrics_id) REFERENCES metrics(id)
-        );
-        """
-        ,
-        """
-        CREATE TABLE IF NOT EXISTS resources_segments (
-            resources_id INT NOT NULL,
-            segments_id INT NOT NULL,
-            PRIMARY KEY (resources_id, segments_id),
-            FOREIGN KEY (resources_id) REFERENCES resources(id),
-            FOREIGN KEY (segments_id) REFERENCES segments(id)
+        CREATE TABLE IF NOT EXISTS selectable_with (
+            field_id INT NOT NULL,
+            selectable_name VARCHAR(200) NOT NULL,
+            selectable_type VARCHAR(45) NOT NULL,
+            PRIMARY KEY (field_id, selectable_name),
+            FOREIGN KEY (field_id) REFERENCES fields(id)
         );
         """
         ]
         for query in create_table_query:
             cursor.execute(query)
-        # cursor.execute(create_table_query)
-        # cursor.close()
-        # connection.commit()
         print("Table created successfully in MySQL database.")
 
     except Error as e:
@@ -204,50 +147,25 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                 data_resources = (row['resource_name'], row['description'], row['with_metrics'],)
                 cursor.execute(insert_query_resources, data_resources)
 
-            elif (table_name == 'metrics'):
-                # Insert into metrics table
-                insert_query_metrics = """
-                INSERT INTO metrics (name, description, category, data_type, type_url, filterable, selectable, sortable, repeated)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
-                """
-                data_metrics = (
-                    row['metric_name'], row['metric_field_description'], row['metric_category'], 
-                    row['metric_data_type'], row['metric_type_url'], row['metric_filterable'], 
-                    row['metric_selectable'], row['metric_sortable'], row['metric_repeated'],
-                )
-                cursor.execute(insert_query_metrics, data_metrics)
-
-            elif (table_name == 'segments'):
-                # Insert into segments table
-                insert_query_segments = """
-                INSERT INTO segments (name, description, category, data_type, type_url, filterable, selectable, sortable, repeated)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+            elif (table_name == 'fields'):
+                # Insert into fields table
+                insert_query_data_type = """
+                INSERT INTO fields (name, description, category, type_url, filterable, selectable, sortable, repeated)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
                 """
                 data_segments = (
-                    row['segment_name'], row['segment_field_description'], row['segment_category'],
-                    row['segment_data_type'], row['segment_type_url'], row['segment_filterable'],
-                    row['segment_selectable'], row['segment_sortable'], row['segment_repeated'],
+                    row['field_name'], row['field_field_description'], row['field_category'],
+                    row['field_type_url'], row['field_filterable'],
+                    row['field_selectable'], row['field_sortable'], row['field_repeated'],
                 )
-                cursor.execute(insert_query_segments, data_segments)
+                cursor.execute(insert_query_data_type, data_segments)
 
-            elif (table_name == 'attributes'):
-                # Insert into attributes table
-                insert_query_attributes = """
-                INSERT INTO attributes (name, description, category, data_type, type_url, filterable, selectable, sortable, repeated)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
-                """
-                data_attributes = (
-                    row['attribute_name'], row['attribute_field_description'], row['attribute_category'],
-                    row['attribute_data_type'], row['attribute_type_url'], row['attribute_filterable'],
-                    row['attribute_selectable'], row['attribute_sortable'], row['attribute_repeated'],
-                )
-                cursor.execute(insert_query_attributes, data_attributes)
             
-            elif table_name == 'attributed_resources':
+            elif table_name == 'segmenting_attributed_resources':
                 # Assuming 'resource_name' is a column in your DataFrame
                 # Retrieve resource_id_1 based on 'resource_name'
                 cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
-                result = cursor.fetchone()
+                result = cursor.fetchone() 
 
                 # Check if a row is returned
                 if result:
@@ -269,25 +187,13 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
 
                                 # Insert into attributed_resources table
                                 insert_query_attributed_resources = """
-                                INSERT INTO attributed_resources (resource_id_1, resource_id_2)
-                                VALUES (%s, %s);
+                                INSERT INTO segmenting_attributed_resources (resource_id_1, resource_id_2, type)
+                                VALUES (%s, %s, "attributed_resources");
                                 """
                                 data_attributed_resources = (resource_id_1, resource_id_2)
                                 cursor.execute(insert_query_attributed_resources, data_attributed_resources)
                             else:
                                 print(f"Resource '{attributed_resource}' not found.")
-                else:
-                    print(f"Resource '{row['resource_name']}' not found.")
-
-            elif table_name == 'segmenting_resources':
-                # Assuming 'resource_name' is a column in your DataFrame
-                # Retrieve resource_id_1 based on 'resource_name'
-                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
-                result = cursor.fetchone()
-
-                # Check if a row is returned
-                if result:
-                    resource_id_1 = result[0]
 
                     # Assuming 'segmenting_resources' is a column containing a list of segmenting resources
                     segmenting_resources = row['segmenting_resource'].split(',')
@@ -305,8 +211,8 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
 
                                 # Insert into segmenting_resources table
                                 insert_query_segmenting_resources = """
-                                INSERT INTO segmenting_resources (resource_id_1, resource_id_2)
-                                VALUES (%s, %s);
+                                INSERT INTO segmenting_attributed_resources (resource_id_1, resource_id_2, type)
+                                VALUES (%s, %s, "segmenting_resources");
                                 """
                                 data_segmenting_resources = (resource_id_1, resource_id_2)
                                 cursor.execute(insert_query_segmenting_resources, data_segmenting_resources)
@@ -315,7 +221,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                 else:
                     print(f"Resource '{row['resource_name']}' not found.")
 
-            elif table_name == 'resources_attributes':
+            elif table_name == 'resources_fields':
                 # Assuming 'resource_name' is a column in your DataFrame
                 # Retrieve resources_id based on 'resource_name'
                 cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
@@ -328,7 +234,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                     # Assuming 'attributes' is a column containing a list of attributes
                     attributes = row['list_attributes'].split(',')
 
-                    # Insert pairs into attrbutes table
+                    # Insert pairs into attributes table
                     for attribute in attributes:
                         # Retrieve attribute_id based on 'attribute'
                         if attribute: # Check if attribute is not empty
@@ -336,9 +242,9 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                             check_resource_name = row['resource_name'] + "." 
                             if attribute.strip().find(check_resource_name) == -1:  
                                 attribute = row['resource_name'] + "." + attribute.strip()
-                                cursor.execute("SELECT id FROM attributes WHERE name = %s", (attribute,))
+                                cursor.execute("SELECT id FROM fields WHERE name = %s", (attribute,))
                             else:
-                                cursor.execute("SELECT id FROM attributes WHERE name = %s", (attribute.strip(),))
+                                cursor.execute("SELECT id FROM fields WHERE name = %s", (attribute.strip(),))
                             result = cursor.fetchone()
 
                             # Check if a row is returned
@@ -346,26 +252,13 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 attributes_id = result[0]
                                 # Insert into attributes table
                                 insert_query_resources_attributes = """
-                                INSERT INTO resources_attributes (resources_id, attributes_id)
+                                INSERT INTO resources_fields (resources_id, fields_id)
                                 VALUES (%s, %s);
                                 """
                                 data_resources_attributes = (resources_id, attributes_id)
                                 cursor.execute(insert_query_resources_attributes, data_resources_attributes)
                             else:
                                 print(f"Resource '{attribute}' not found.")
-                else:
-                    print(f"Resource '{row['resource_name']}' not found.")
-
-
-            elif table_name == 'resources_metrics':
-                # Assuming 'resource_name' is a column in your DataFrame
-                # Retrieve resources_id based on 'resource_name'
-                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
-                result = cursor.fetchone()
-
-                # Check if a row is returned
-                if result:
-                    resources_id = result[0] # resources_id is the id of the resource
 
                     # Assuming 'metrics' is a column containing a list of metrics
                     metrics = row['list_metrics'].split(',')
@@ -376,7 +269,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                         if metric: # Check if metric is not empty
                             # add 'metrics.' to the beginning of the metric name
                             metric = "metrics." + metric.strip()
-                            cursor.execute("SELECT id FROM metrics WHERE name = %s", (metric,))
+                            cursor.execute("SELECT id FROM fields WHERE name = %s", (metric,))
                             result = cursor.fetchone()
 
                             # Check if a row is returned
@@ -384,25 +277,14 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 metrics_id = result[0]
                                 # Insert into metrics table
                                 insert_query_resources_metrics = """
-                                INSERT INTO resources_metrics (resources_id, metrics_id)
+                                INSERT INTO resources_fields (resources_id, fields_id)
                                 VALUES (%s, %s);
                                 """
                                 data_resources_metrics = (resources_id, metrics_id)
                                 cursor.execute(insert_query_resources_metrics, data_resources_metrics)
                             else:
                                 print(f"Resource '{metric}' not found.")
-                else:
-                    print(f"Resource '{row['resource_name']}' not found.")
 
-            elif table_name == 'resources_segments':
-                # Assuming 'resource_name' is a column in your DataFrame
-                # Retrieve resources_id based on 'resource_name'
-                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
-                result = cursor.fetchone()
-
-                # Check if a row is returned
-                if result:
-                    resources_id = result[0] # resources_id is the id of the resource
 
                     # Assuming 'segments' is a column containing a list of segments 
                     segments = row['list_segments'].split(',')
@@ -413,7 +295,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                         if segment: # Check if segment is not empty
                             # add 'segments.' to the beginning of the segment name
                             segment = "segments." + segment.strip()
-                            cursor.execute("SELECT id FROM segments WHERE name = %s", (segment,))
+                            cursor.execute("SELECT id FROM fields WHERE name = %s", (segment,))
                             result = cursor.fetchone()
 
                             # Check if a row is returned
@@ -421,15 +303,143 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 segments_id = result[0]
                                 # Insert into segments table
                                 insert_query_resources_segments = """
-                                INSERT INTO resources_segments (resources_id, segments_id)
+                                INSERT INTO resources_fields (resources_id, fields_id)
                                 VALUES (%s, %s);
                                 """
                                 data_resources_segments = (resources_id, segments_id)
                                 cursor.execute(insert_query_resources_segments, data_resources_segments)
                             else:
                                 print(f"Resource '{segment}' not found.")
+
                 else:
                     print(f"Resource '{row['resource_name']}' not found.")
+
+            elif table_name == 'data_type':
+                cursor.execute("SELECT id FROM fields WHERE name = %s", (row['field_name'],))
+                result = cursor.fetchone() 
+
+                # Check if a row is returned
+                if result:
+                    field_id = result[0] # field_id is the id of the field, the first column in the table
+
+                    # Assuming 'attributed_resource' is a column containing a list of attributed resources
+                    data_type_names = row['field_data_type'].split(',')
+
+                    # Insert pairs into attributed_resources table
+                    for data_type_name in data_type_names:
+                        # Retrieve resource_id_2 based on 'attributed_resource'
+                        if data_type_name: # Check if attributed_resource is not empty
+                            insert_query_attributed_resources = """
+                            INSERT INTO data_type (field_id, name)
+                            VALUES (%s, %s);
+                            """
+                            data_attributed_resources = (field_id, data_type_name.strip())
+                            cursor.execute(insert_query_attributed_resources, data_attributed_resources)
+                        else:
+                            print(f"Resource '{attributed_resource}' not found.")
+
+            elif table_name == 'selectable_with':
+                cursor.execute("SELECT id FROM fields WHERE name = %s", (row['field_name'],))
+                result = cursor.fetchone() 
+
+                # Check if a row is returned
+                if result:
+                    field_id = result[0] # field_id is the id of the field, the first column in the table
+
+                    # Assuming 'attributed_resource' is a column containing a list of attributed resources
+                    selectable_names = row['field_selectable_with'].split(',')
+
+                    # Insert pairs into attributed_resources table
+                    for selectable_name in selectable_names:
+                        # Retrieve resource_id_2 based on 'attributed_resource'
+                        if selectable_name: # Check if attributed_resource is not empty
+                            if selectable_name.find("metrics.") != -1:
+                                selectable_type = "metrics"
+                            elif selectable_name.find("segments.") != -1:
+                                selectable_type = "segments"
+                            else:
+                                selectable_type = "resources"
+                            insert_query_attributed_resources = """
+                            INSERT INTO selectable_with (field_id, selectable_name, selectable_type)
+                            VALUES (%s, %s, %s);
+                            """
+                            data_attributed_resources = (field_id, selectable_name.strip(), selectable_type)
+                            cursor.execute(insert_query_attributed_resources, data_attributed_resources)
+                else:
+                    print(f"Resource '{attributed_resource}' not found.")
+            # elif table_name == 'resources_metrics':
+            #     # Assuming 'resource_name' is a column in your DataFrame
+            #     # Retrieve resources_id based on 'resource_name'
+            #     cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
+            #     result = cursor.fetchone()
+
+            #     # Check if a row is returned
+            #     if result:
+            #         resources_id = result[0] # resources_id is the id of the resource
+
+            #         # Assuming 'metrics' is a column containing a list of metrics
+            #         metrics = row['list_metrics'].split(',')
+
+            #         # Insert pairs into metrics table
+            #         for metric in metrics:
+            #             # Retrieve metrics_id based on 'metric'
+            #             if metric: # Check if metric is not empty
+            #                 # add 'metrics.' to the beginning of the metric name
+            #                 metric = "metrics." + metric.strip()
+            #                 cursor.execute("SELECT id FROM metrics WHERE name = %s", (metric,))
+            #                 result = cursor.fetchone()
+
+            #                 # Check if a row is returned
+            #                 if result:
+            #                     metrics_id = result[0]
+            #                     # Insert into metrics table
+            #                     insert_query_resources_metrics = """
+            #                     INSERT INTO resources_metrics (resources_id, metrics_id)
+            #                     VALUES (%s, %s);
+            #                     """
+            #                     data_resources_metrics = (resources_id, metrics_id)
+            #                     cursor.execute(insert_query_resources_metrics, data_resources_metrics)
+            #                 else:
+            #                     print(f"Resource '{metric}' not found.")
+            #     else:
+            #         print(f"Resource '{row['resource_name']}' not found.")
+
+            # elif table_name == 'resources_segments':
+            #     # Assuming 'resource_name' is a column in your DataFrame
+            #     # Retrieve resources_id based on 'resource_name'
+            #     cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
+            #     result = cursor.fetchone()
+
+            #     # Check if a row is returned
+            #     if result:
+            #         resources_id = result[0] # resources_id is the id of the resource
+
+            #         # Assuming 'segments' is a column containing a list of segments 
+            #         segments = row['list_segments'].split(',')
+
+            #         # Insert pairs into segments table
+            #         for segment in segments:
+            #             # Retrieve segments_id based on 'segment'
+            #             if segment: # Check if segment is not empty
+            #                 # add 'segments.' to the beginning of the segment name
+            #                 segment = "segments." + segment.strip()
+            #                 cursor.execute("SELECT id FROM segments WHERE name = %s", (segment,))
+            #                 result = cursor.fetchone()
+
+            #                 # Check if a row is returned
+            #                 if result:
+            #                     segments_id = result[0]
+            #                     # Insert into segments table
+            #                     insert_query_resources_segments = """
+            #                     INSERT INTO resources_segments (resources_id, segments_id)
+            #                     VALUES (%s, %s);
+            #                     """
+            #                     data_resources_segments = (resources_id, segments_id)
+            #                     cursor.execute(insert_query_resources_segments, data_resources_segments)
+            #                 else:
+            #                     print(f"Resource '{segment}' not found.")
+            #     else:
+            #         print(f"Resource '{row['resource_name']}' not found.")
             else:
                 print("Table name not found.")
 
@@ -448,20 +458,16 @@ create_table(db_config)
 
 load_csv_to_mysql(resources_file_path, 'resources', db_config)
 
-load_csv_to_mysql(metrics_file_path, 'metrics', db_config)
+load_csv_to_mysql(fields_file_path, 'fields', db_config)
 
-load_csv_to_mysql(segments_file_path, 'segments', db_config)
+load_csv_to_mysql(resources_file_path, 'segmenting_attributed_resources', db_config)
 
-load_csv_to_mysql(attributes_file_path, 'attributes', db_config)
+load_csv_to_mysql(resources_file_path, 'resources_fields', db_config)
 
-load_csv_to_mysql(resources_file_path, 'attributed_resources', db_config)
+load_csv_to_mysql(fields_file_path, 'data_type', db_config)
 
-load_csv_to_mysql(resources_file_path, 'segmenting_resources', db_config)
+load_csv_to_mysql(fields_file_path, 'selectable_with', db_config)
 
-load_csv_to_mysql(resources_file_path, 'resources_attributes', db_config)
 
-load_csv_to_mysql(resources_file_path, 'resources_metrics', db_config)
-
-load_csv_to_mysql(resources_file_path, 'resources_segments', db_config)
 
 

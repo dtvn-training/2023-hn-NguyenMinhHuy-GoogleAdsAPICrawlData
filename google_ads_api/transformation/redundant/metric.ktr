@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>segment</name>
+    <name>metric</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2023/12/18 09:17:44.041</created_date>
+    <created_date>2023/12/18 09:04:33.580</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2023/12/18 09:17:44.041</modified_date>
+    <modified_date>2023/12/18 09:04:33.580</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -473,7 +473,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/segments.csv</filename>
+    <filename>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/metrics.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -489,40 +489,40 @@
     <encoding/>
     <fields>
       <field>
-        <name>segment_category</name>
+        <name>metric_category</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>7</length>
+        <length>6</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_data_type</name>
+        <name>metric_data_type</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>13</length>
+        <length>6</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_field_description</name>
+        <name>metric_field_description</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>329</length>
+        <length>568</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_filterable</name>
+        <name>metric_filterable</name>
         <type>Boolean</type>
         <format/>
         <currency>$</currency>
@@ -533,18 +533,18 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_name</name>
+        <name>metric_name</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>59</length>
+        <length>65</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_repeated</name>
+        <name>metric_repeated</name>
         <type>Boolean</type>
         <format/>
         <currency>$</currency>
@@ -555,7 +555,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_selectable</name>
+        <name>metric_selectable</name>
         <type>Boolean</type>
         <format/>
         <currency>$</currency>
@@ -566,18 +566,18 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_selectable_with</name>
+        <name>metric_selectable_with</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>9759</length>
+        <length>4</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_sortable</name>
+        <name>metric_sortable</name>
         <type>Boolean</type>
         <format/>
         <currency>$</currency>
@@ -588,13 +588,13 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>segment_type_url</name>
+        <name>metric_type_url</name>
         <type>String</type>
         <format/>
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>106</length>
+        <length>3</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -608,8 +608,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>256</yloc>
+      <xloc>48</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -626,87 +626,70 @@
     </partitioning>
     <fields>
       <field>
-        <name>segment_category</name>
-        <rename/>
+        <name>metric_category</name>
       </field>
       <field>
-        <name>segment_data_type</name>
-        <rename/>
+        <name>metric_data_type</name>
       </field>
       <field>
-        <name>segment_field_description</name>
-        <rename/>
+        <name>metric_field_description</name>
       </field>
       <field>
-        <name>segment_filterable</name>
-        <rename/>
+        <name>metric_filterable</name>
       </field>
       <field>
-        <name>segment_name</name>
-        <rename/>
+        <name>metric_name</name>
       </field>
       <field>
-        <name>segment_repeated</name>
-        <rename/>
+        <name>metric_repeated</name>
       </field>
       <field>
-        <name>segment_selectable</name>
-        <rename/>
+        <name>metric_selectable</name>
       </field>
       <field>
-        <name>segment_sortable</name>
-        <rename/>
+        <name>metric_sortable</name>
       </field>
       <field>
-        <name>segment_type_url</name>
-        <rename/>
+        <name>metric_type_url</name>
       </field>
       <field>
-        <name>segment_selectable_with</name>
-        <rename/>
+        <name>metric_selectable_with</name>
       </field>
       <field>
-        <name>formatted_segment_category</name>
-        <rename>segment_category_</rename>
+        <name>formatted_metric_field_description</name>
+        <rename>metric_field_description_</rename>
       </field>
       <field>
-        <name>formatted_segment_data_type</name>
-        <rename>segment_data_type_</rename>
+        <name>formatted_metric_category</name>
+        <rename>metric_category_</rename>
       </field>
       <field>
-        <name>formatted_segment_field_description</name>
-        <rename>segment_field_description_</rename>
+        <name>formatted_metric_data_type</name>
+        <rename>metric_data_type_</rename>
       </field>
       <field>
-        <name>formatted_segment_name</name>
-        <rename>segment_name_</rename>
+        <name>formatted_metric_name</name>
+        <rename>metric_name_</rename>
       </field>
       <field>
-        <name>formatted_segment_type_url</name>
-        <rename>segment_type_url_</rename>
-      </field>
-      <field>
-        <name>formatted_segment_selectable_with</name>
-        <rename>segment_selectable_with_</rename>
+        <name>formatted_metric_type_url</name>
+        <rename>metric_type_url_</rename>
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>
-        <name>segment_category</name>
+        <name>metric_category</name>
       </remove>
       <remove>
-        <name>segment_data_type</name>
+        <name>metric_data_type</name>
       </remove>
       <remove>
-        <name>segment_field_description</name>
+        <name>metric_field_description</name>
       </remove>
       <remove>
-        <name>segment_name</name>
+        <name>metric_name</name>
       </remove>
       <remove>
-        <name>segment_type_url</name>
-      </remove>
-      <remove>
-        <name>segment_selectable_with</name>
+        <name>metric_type_url</name>
       </remove>
     </fields>
     <attributes/>
@@ -718,8 +701,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>256</yloc>
+      <xloc>416</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -736,44 +719,44 @@
     </partitioning>
     <fields>
       <field>
-        <name>segment_filterable</name>
-        <rename/>
+        <name>metric_filterable</name>
+        <rename>field_filterable</rename>
       </field>
       <field>
-        <name>segment_repeated</name>
-        <rename/>
+        <name>metric_repeated</name>
+        <rename>field_repeated</rename>
       </field>
       <field>
-        <name>segment_selectable</name>
-        <rename/>
+        <name>metric_selectable</name>
+        <rename>field_selectable</rename>
       </field>
       <field>
-        <name>segment_sortable</name>
-        <rename/>
+        <name>metric_sortable</name>
+        <rename>field_sortable</rename>
       </field>
       <field>
-        <name>segment_category_</name>
-        <rename>segment_category</rename>
+        <name>metric_selectable_with</name>
+        <rename>field_selectable_with</rename>
       </field>
       <field>
-        <name>segment_data_type_</name>
-        <rename>segment_data_type</rename>
+        <name>metric_field_description_</name>
+        <rename>field_field_description</rename>
       </field>
       <field>
-        <name>segment_field_description_</name>
-        <rename>segment_field_description</rename>
+        <name>metric_category_</name>
+        <rename>field_category</rename>
       </field>
       <field>
-        <name>segment_name_</name>
-        <rename>segment_name</rename>
+        <name>metric_data_type_</name>
+        <rename>field_data_type</rename>
       </field>
       <field>
-        <name>segment_type_url_</name>
-        <rename>segment_type_url</rename>
+        <name>metric_name_</name>
+        <rename>field_name</rename>
       </field>
       <field>
-        <name>segment_selectable_with_</name>
-        <rename>segment_selectable_with</rename>
+        <name>metric_type_url_</name>
+        <rename>field_type_url</rename>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -786,8 +769,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>256</yloc>
+      <xloc>576</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -810,14 +793,14 @@
         <conditions>
           <condition>
             <negated>N</negated>
-            <leftvalue>segment_category</leftvalue>
+            <leftvalue>metric_category</leftvalue>
             <function>IS NOT NULL</function>
             <rightvalue/>
           </condition>
           <condition>
             <negated>N</negated>
             <operator>AND</operator>
-            <leftvalue>segment_name</leftvalue>
+            <leftvalue>metric_field_description</leftvalue>
             <function>IS NOT NULL</function>
             <rightvalue/>
           </condition>
@@ -833,8 +816,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>256</yloc>
+      <xloc>144</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -871,60 +854,53 @@ function removeTrailingSpaces(input) {
 	}
 }
 
-var formatted_segment_category = removeTrailingSpaces(segment_category);
-var formatted_segment_data_type = removeTrailingSpaces(segment_data_type);
-var formatted_segment_field_description = removeTrailingSpaces(segment_field_description);
-var formatted_segment_name = removeTrailingSpaces(segment_name);
-var formatted_segment_type_url = removeTrailingSpaces(segment_type_url);
-var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_with);
+var formatted_metric_field_description = removeHtmlTags(metric_field_description);
+
+var formatted_metric_category = removeTrailingSpaces(metric_category);
+var formatted_metric_data_type = removeTrailingSpaces(metric_data_type);
+var formatted_metric_name = removeTrailingSpaces(metric_name);
+var formatted_metric_type_url = removeTrailingSpaces(metric_type_url);
+
 
 </jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
       <field>
-        <name>formatted_segment_category</name>
-        <rename>formatted_segment_category</rename>
+        <name>formatted_metric_field_description</name>
+        <rename>formatted_metric_field_description</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_segment_data_type</name>
-        <rename>formatted_segment_data_type</rename>
+        <name>formatted_metric_category</name>
+        <rename>formatted_metric_category</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_segment_field_description</name>
-        <rename>formatted_segment_field_description</rename>
+        <name>formatted_metric_data_type</name>
+        <rename>formatted_metric_data_type</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_segment_name</name>
-        <rename>formatted_segment_name</rename>
+        <name>formatted_metric_name</name>
+        <rename>formatted_metric_name</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
       <field>
-        <name>formatted_segment_type_url</name>
-        <rename>formatted_segment_type_url</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formatted_segment_selectable_with</name>
-        <rename>formatted_segment_selectable_with</rename>
+        <name>formatted_metric_type_url</name>
+        <rename>formatted_metric_type_url</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -940,8 +916,8 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>256</yloc>
+      <xloc>272</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -970,7 +946,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/processed/segment</name>
+      <name>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/processed/field</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
@@ -988,7 +964,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
     </file>
     <fields>
       <field>
-        <name>segment_filterable</name>
+        <name>field_filterable</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -1000,7 +976,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_repeated</name>
+        <name>field_repeated</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -1012,7 +988,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_selectable</name>
+        <name>field_selectable</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -1024,7 +1000,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_sortable</name>
+        <name>field_sortable</name>
         <type>Boolean</type>
         <format/>
         <currency/>
@@ -1036,7 +1012,19 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_category</name>
+        <name>field_selectable_with</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>4</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>field_field_description</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1048,7 +1036,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_data_type</name>
+        <name>field_category</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1060,7 +1048,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_field_description</name>
+        <name>field_data_type</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1072,7 +1060,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_name</name>
+        <name>field_name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1084,19 +1072,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
         <precision>-1</precision>
       </field>
       <field>
-        <name>segment_type_url</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>segment_selectable_with</name>
+        <name>field_type_url</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1117,8 +1093,8 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>256</yloc>
+      <xloc>800</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
