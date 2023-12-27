@@ -67,7 +67,7 @@ def create_table(db_config): # this function create table in mysql database
             name VARCHAR(255) NOT NULL UNIQUE,
             description TEXT NOT NULL,
             category VARCHAR(255) NOT NULL,
-            type_url TEXT NOT NULL,
+            type_url TEXT,
             filterable VARCHAR(10) NOT NULL,
             selectable VARCHAR(10) NOT NULL,
             sortable VARCHAR(10) NOT NULL,
