@@ -101,8 +101,8 @@ def create_table(db_config): # this function create table in mysql database
         CREATE TABLE IF NOT EXISTS data_type (
             field_id INT NOT NULL,
             name VARCHAR(200) NOT NULL,
-            enum_value VARCHAR(200),
-            PRIMARY KEY (field_id, name),
+            enum_value VARCHAR(200) DEFAULT "NULL",
+            PRIMARY KEY (field_id, name, enum_value),
             FOREIGN KEY (field_id) REFERENCES fields(id)
         );
         """
@@ -327,17 +327,34 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                     data_type_names = row['field_data_type'].split(',')
 
                     # Insert pairs into attributed_resources table
-                    for data_type_name in data_type_names:
-                        # Retrieve resource_id_2 based on 'attributed_resource'
-                        if data_type_name: # Check if attributed_resource is not empty
-                            insert_query_attributed_resources = """
-                            INSERT INTO data_type (field_id, name)
-                            VALUES (%s, %s);
-                            """
-                            data_attributed_resources = (field_id, data_type_name.strip())
-                            cursor.execute(insert_query_attributed_resources, data_attributed_resources)
-                        else:
-                            print(f"Resource '{attributed_resource}' not found.")
+                    # if data_type_names have more than one element, insert each element into data_type table
+                    if len(data_type_names) == 1: # if data_type_names only have one element, insert it into data_type table
+                        for data_type_name in data_type_names:
+                            # Retrieve resource_id_2 based on 'attributed_resource'
+                            if data_type_name: # Check if attributed_resource is not empty
+                                # if data_type_name.strip() 
+                                insert_query_attributed_resources = """
+                                INSERT INTO data_type (field_id, name)
+                                VALUES (%s, %s);
+                                """
+                                data_attributed_resources = (field_id, data_type_name.strip())
+                                cursor.execute(insert_query_attributed_resources, data_attributed_resources)
+                            else:
+                                print(f"Resource '{attributed_resource}' not found.")
+                    else: # if data_type_names have more than one element, insert each element into data_type table as ENUM
+                        for data_type_name in data_type_names:
+                            # Retrieve resource_id_2 based on 'attributed_resource'
+                            if data_type_name: # Check if attributed_resource is not empty
+                                # if data_type_name.strip() 
+                                insert_query_attributed_resources = """
+                                INSERT INTO data_type (field_id, name, enum_value)
+                                VALUES (%s, %s, %s);
+                                """
+                                data_attributed_resources = (field_id, "ENUM", data_type_name.strip())
+                                cursor.execute(insert_query_attributed_resources, data_attributed_resources)
+                            else:
+                                print(f"Resource '{attributed_resource}' not found.")
+
 
             elif table_name == 'selectable_with':
                 cursor.execute("SELECT id FROM fields WHERE name = %s", (row['field_name'],))
