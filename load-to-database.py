@@ -101,6 +101,7 @@ def create_table(db_config): # this function create table in mysql database
         CREATE TABLE IF NOT EXISTS data_type (
             field_id INT NOT NULL,
             name VARCHAR(200) NOT NULL,
+            enum_value VARCHAR(200),
             PRIMARY KEY (field_id, name),
             FOREIGN KEY (field_id) REFERENCES fields(id)
         );
