@@ -20,8 +20,6 @@ class ResourceWithoutMetricsSpider(scrapy.Spider):
         # If it's a valid URL, create a Request object
             yield scrapy.Request(response.urljoin(item_url), callback=self.parse_attribute)
         
-        # item_url = response.css('body > section > devsite-book-nav > nav > div.devsite-book-nav-wrapper > div.devsite-mobile-nav-bottom > ul > li > div > ul > li:nth-child(1) > div > ul > li:nth-child(2) > a > span')
-
         # If there's a next page, click it and repeat the process
         next_page = response.css("li.next > a ::attr(href)").extract_first()
         if next_page:
@@ -52,10 +50,8 @@ class ResourceWithoutMetricsSpider(scrapy.Spider):
                 item['attribute_category'] = response.xpath(selector_attribute_category).get()
 
                 item['attribute_data_type'] = response.xpath(selector_attribute_data_type).get()
-                if "\n" in response.xpath(selector_attribute_data_type).get(): 
+                if "\n" in item['attribute_data_type']:   # "\n" in item['attribute_data_type'] means that the attribute_data_type is ENUM, extract all the values and store them in a list, otherwise, store the value as a string
                     item['attribute_data_type'] = response.xpath(selector_attribute_data_type_enum).extract()
-                else:
-                    item['attribute_data_type'] = response.xpath(selector_attribute_data_type).get()
 
                 item['attribute_type_url'] = response.xpath(selector_attribute_type_url).get()
                 item['attribute_filterable'] = response.xpath(selector_attribute_filterable).get()

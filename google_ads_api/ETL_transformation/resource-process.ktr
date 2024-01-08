@@ -648,6 +648,166 @@
     </GUI>
   </step>
   <step>
+    <name>Change fields name 2 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>with_metrics</name>
+      </field>
+      <field>
+        <name>attributed_resource_</name>
+        <rename>attributed_resource</rename>
+      </field>
+      <field>
+        <name>description_</name>
+        <rename>description</rename>
+      </field>
+      <field>
+        <name>list_attributes_</name>
+        <rename>list_attributes</rename>
+      </field>
+      <field>
+        <name>list_metrics_</name>
+        <rename>list_metrics</rename>
+      </field>
+      <field>
+        <name>list_segments_</name>
+        <rename>list_segments</rename>
+      </field>
+      <field>
+        <name>resource_name_</name>
+        <rename>resource_name</rename>
+      </field>
+      <field>
+        <name>segmenting_resource_</name>
+        <rename>segmenting_resource</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Change fields name 3</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>with_metrics</name>
+      </field>
+      <field>
+        <name>formatted_attributed_resource</name>
+        <rename>attributed_resource_</rename>
+      </field>
+      <field>
+        <name>formatted_description</name>
+        <rename>description_</rename>
+      </field>
+      <field>
+        <name>formatted_list_attributes</name>
+        <rename>list_attributes_</rename>
+      </field>
+      <field>
+        <name>formatted_list_metrics</name>
+        <rename>list_metrics_</rename>
+      </field>
+      <field>
+        <name>formatted_list_segments</name>
+        <rename>list_segments_</rename>
+      </field>
+      <field>
+        <name>formatted_resource_name</name>
+        <rename>resource_name_</rename>
+      </field>
+      <field>
+        <name>formatted_segmenting_resource</name>
+        <rename>segmenting_resource_</rename>
+      </field>
+      <field>
+        <name>attributed_resource</name>
+      </field>
+      <field>
+        <name>description</name>
+      </field>
+      <field>
+        <name>list_attributes</name>
+      </field>
+      <field>
+        <name>list_metrics</name>
+      </field>
+      <field>
+        <name>list_segments</name>
+      </field>
+      <field>
+        <name>resource_name</name>
+      </field>
+      <field>
+        <name>segmenting_resource</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>attributed_resource</name>
+      </remove>
+      <remove>
+        <name>description</name>
+      </remove>
+      <remove>
+        <name>list_attributes</name>
+      </remove>
+      <remove>
+        <name>list_metrics</name>
+      </remove>
+      <remove>
+        <name>list_segments</name>
+      </remove>
+      <remove>
+        <name>resource_name</name>
+      </remove>
+      <remove>
+        <name>segmenting_resource</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Filter NULL value</name>
     <type>FilterRows</type>
     <description/>
@@ -695,6 +855,53 @@
     </GUI>
   </step>
   <step>
+    <name>Filter NULL value 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Remove HTML tags &amp; space 2</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>attributed_resource</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>resource_name</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Input resources</name>
     <type>CsvInput</type>
     <description/>
@@ -705,7 +912,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:\Users\HuyNM\Documents\2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData\google_ads_api\resources_google_ads.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/../data_crawled/resources_google_ads.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -820,6 +1027,135 @@
     <GUI>
       <xloc>144</xloc>
       <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Input resources 2</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <filename>${Internal.Entry.Current.Directory}/../data_crawled/resources_without_metrics.csv</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>Y</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <format>Unix</format>
+    <encoding/>
+    <fields>
+      <field>
+        <name>attributed_resource</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>112</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>description</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>993</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>list_attributes</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>4293</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>list_metrics</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>4</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>list_segments</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>4</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>resource_name</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>40</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>segmenting_resource</name>
+        <type>String</type>
+        <format/>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>28</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>with_metrics</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>$</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1075,6 +1411,128 @@ var formatted_segmenting_resource = removeTrailingSpaces(segmenting_resource);
     </GUI>
   </step>
   <step>
+    <name>Remove HTML tags &amp; space 2</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>function removeHtmlTags(input) {
+  // Remove all HTML tags
+  return input.replace(/&lt;[^>]*>/g, '');
+}
+
+
+function removeTrailingSpaces(input) {
+	if (input != null) {
+    // Using trim() to remove trailing spaces
+    return input.trim();
+  	} else {
+    // If input is null or undefined, return an empty string
+    return '';
+	}
+}
+
+function removeSpaceAddUnderscore(input){
+	return input.toLowerCase().replace(/\s+/g, '_');
+}
+
+var formatted_attributed_resource = removeTrailingSpaces(attributed_resource);
+var formatted_description = removeHtmlTags(description);
+var formatted_list_attributes = removeTrailingSpaces(list_attributes);
+var formatted_list_metrics = removeTrailingSpaces(list_metrics);
+var formatted_list_segments = removeTrailingSpaces(list_segments);
+var formatted_resource_name = removeSpaceAddUnderscore(removeTrailingSpaces(resource_name));
+var formatted_segmenting_resource = removeTrailingSpaces(segmenting_resource);
+
+
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>formatted_attributed_resource</name>
+        <rename>formatted_attributed_resource</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>formatted_description</name>
+        <rename>formatted_description</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>formatted_list_attributes</name>
+        <rename>formatted_list_attributes</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>formatted_list_metrics</name>
+        <rename>formatted_list_metrics</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>formatted_list_segments</name>
+        <rename>formatted_list_segments</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>formatted_resource_name</name>
+        <rename>formatted_resource_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>formatted_segmenting_resource</name>
+        <rename>formatted_segmenting_resource</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Text file output</name>
     <type>TextFileOutput</type>
     <description/>
@@ -1099,7 +1557,7 @@ var formatted_segmenting_resource = removeTrailingSpaces(segmenting_resource);
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/processed/resource-process</name>
+      <name>${Internal.Entry.Current.Directory}/../data_processed/resource-process</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>Y</do_not_open_new_file_init>
       <extention>csv</extention>
@@ -1224,464 +1682,6 @@ var formatted_segmenting_resource = removeTrailingSpaces(segmenting_resource);
     <GUI>
       <xloc>880</xloc>
       <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Change fields name 2 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>with_metrics</name>
-      </field>
-      <field>
-        <name>attributed_resource_</name>
-        <rename>attributed_resource</rename>
-      </field>
-      <field>
-        <name>description_</name>
-        <rename>description</rename>
-      </field>
-      <field>
-        <name>list_attributes_</name>
-        <rename>list_attributes</rename>
-      </field>
-      <field>
-        <name>list_metrics_</name>
-        <rename>list_metrics</rename>
-      </field>
-      <field>
-        <name>list_segments_</name>
-        <rename>list_segments</rename>
-      </field>
-      <field>
-        <name>resource_name_</name>
-        <rename>resource_name</rename>
-      </field>
-      <field>
-        <name>segmenting_resource_</name>
-        <rename>segmenting_resource</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Change fields name 3</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>with_metrics</name>
-      </field>
-      <field>
-        <name>formatted_attributed_resource</name>
-        <rename>attributed_resource_</rename>
-      </field>
-      <field>
-        <name>formatted_description</name>
-        <rename>description_</rename>
-      </field>
-      <field>
-        <name>formatted_list_attributes</name>
-        <rename>list_attributes_</rename>
-      </field>
-      <field>
-        <name>formatted_list_metrics</name>
-        <rename>list_metrics_</rename>
-      </field>
-      <field>
-        <name>formatted_list_segments</name>
-        <rename>list_segments_</rename>
-      </field>
-      <field>
-        <name>formatted_resource_name</name>
-        <rename>resource_name_</rename>
-      </field>
-      <field>
-        <name>formatted_segmenting_resource</name>
-        <rename>segmenting_resource_</rename>
-      </field>
-      <field>
-        <name>attributed_resource</name>
-      </field>
-      <field>
-        <name>description</name>
-      </field>
-      <field>
-        <name>list_attributes</name>
-      </field>
-      <field>
-        <name>list_metrics</name>
-      </field>
-      <field>
-        <name>list_segments</name>
-      </field>
-      <field>
-        <name>resource_name</name>
-      </field>
-      <field>
-        <name>segmenting_resource</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>attributed_resource</name>
-      </remove>
-      <remove>
-        <name>description</name>
-      </remove>
-      <remove>
-        <name>list_attributes</name>
-      </remove>
-      <remove>
-        <name>list_metrics</name>
-      </remove>
-      <remove>
-        <name>list_segments</name>
-      </remove>
-      <remove>
-        <name>resource_name</name>
-      </remove>
-      <remove>
-        <name>segmenting_resource</name>
-      </remove>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter NULL value 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Remove HTML tags &amp; space 2</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>attributed_resource</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>resource_name</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Input resources 2</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <filename>C:\Users\HuyNM\Documents\2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData\google_ads_api\resources_without_metrics.csv</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>Y</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <format>Unix</format>
-    <encoding/>
-    <fields>
-      <field>
-        <name>attributed_resource</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>112</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>description</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>993</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>list_attributes</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>4293</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>list_metrics</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>4</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>list_segments</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>4</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>resource_name</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>40</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>segmenting_resource</name>
-        <type>String</type>
-        <format/>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>28</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>with_metrics</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove HTML tags &amp; space 2</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>function removeHtmlTags(input) {
-  // Remove all HTML tags
-  return input.replace(/&lt;[^>]*>/g, '');
-}
-
-
-function removeTrailingSpaces(input) {
-	if (input != null) {
-    // Using trim() to remove trailing spaces
-    return input.trim();
-  	} else {
-    // If input is null or undefined, return an empty string
-    return '';
-	}
-}
-
-function removeSpaceAddUnderscore(input){
-	return input.toLowerCase().replace(/\s+/g, '_');
-}
-
-var formatted_attributed_resource = removeTrailingSpaces(attributed_resource);
-var formatted_description = removeHtmlTags(description);
-var formatted_list_attributes = removeTrailingSpaces(list_attributes);
-var formatted_list_metrics = removeTrailingSpaces(list_metrics);
-var formatted_list_segments = removeTrailingSpaces(list_segments);
-var formatted_resource_name = removeSpaceAddUnderscore(removeTrailingSpaces(resource_name));
-var formatted_segmenting_resource = removeTrailingSpaces(segmenting_resource);
-
-
-
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>formatted_attributed_resource</name>
-        <rename>formatted_attributed_resource</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formatted_description</name>
-        <rename>formatted_description</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formatted_list_attributes</name>
-        <rename>formatted_list_attributes</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formatted_list_metrics</name>
-        <rename>formatted_list_metrics</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formatted_list_segments</name>
-        <rename>formatted_list_segments</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formatted_resource_name</name>
-        <rename>formatted_resource_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formatted_segmenting_resource</name>
-        <rename>formatted_segmenting_resource</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

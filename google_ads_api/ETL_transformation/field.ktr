@@ -548,7 +548,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/attributes.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/../data_crawled/attributes.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -699,7 +699,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/attributes_without_metrics.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/../data_crawled/attributes_without_metrics.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -850,7 +850,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/metrics.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/../data_crawled/metrics.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -1001,7 +1001,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/segments.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/../data_crawled/segments.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -2410,7 +2410,7 @@ var formatted_segment_selectable_with = removeTrailingSpaces(segment_selectable_
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>C:/Users/HuyNM/Documents/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/processed/field</name>
+      <name>${Internal.Entry.Current.Directory}/../data_processed/field</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>

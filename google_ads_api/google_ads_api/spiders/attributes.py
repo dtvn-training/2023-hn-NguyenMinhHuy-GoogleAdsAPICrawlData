@@ -49,10 +49,8 @@ class AttributesSpider(scrapy.Spider):
                 item['attribute_category'] = response.xpath(selector_attribute_category).get()
 
                 item['attribute_data_type'] = response.xpath(selector_attribute_data_type).get()
-                if "\n" in response.xpath(selector_attribute_data_type).get(): 
+                if "\n" in item['attribute_data_type']:  # "\n" in item['attribute_data_type'] means that the attribute_data_type is ENUM, extract all the values and store them in a list, otherwise, store the value as a string
                     item['attribute_data_type'] = response.xpath(selector_attribute_data_type_enum).extract()
-                else:
-                    item['attribute_data_type'] = response.xpath(selector_attribute_data_type).get()
 
                 item['attribute_type_url'] = response.xpath(selector_attribute_type_url).get()
                 item['attribute_filterable'] = response.xpath(selector_attribute_filterable).get()

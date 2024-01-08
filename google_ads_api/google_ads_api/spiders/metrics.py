@@ -30,10 +30,9 @@ class MetricsSpider(scrapy.Spider):
             item['metric_category'] = response.xpath(selector_metric_category).get()
 
             # Check if the segment_data_type is ENUM
-            if "\n" in response.xpath(selector_metric_data_type).get(): 
+            item['metric_data_type'] = response.xpath(selector_metric_data_type).get() # Get the data type
+            if "\n" in item['metric_data_type']:   # "\n" in item['attribute_data_type'] means that the attribute_data_type is ENUM, extract all the values and store them in a list, otherwise, store the value as a string
                 item['metric_data_type'] = response.xpath(selector_metric_data_type_enum).extract()
-            else:
-                item['metric_data_type'] = response.xpath(selector_metric_data_type).get()
 
             item['metric_type_url'] = response.xpath(selector_metric_type_url).get()
             item['metric_filterable'] = response.xpath(selector_metric_filterable).get()

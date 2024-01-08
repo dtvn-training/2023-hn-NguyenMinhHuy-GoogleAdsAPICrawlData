@@ -31,10 +31,9 @@ class SegmentsSpider(scrapy.Spider):
             item['segment_category'] = response.xpath(selector_segment_category).get()
 
             # Check if the segment_data_type is ENUM
-            if "\n" in response.xpath(selector_segment_data_type).get(): 
+            item['segment_data_type'] = response.xpath(selector_segment_data_type).get()
+            if "\n" in item['segment_data_type']: # "\n" in item['segment_data_type'] means that the segment_data_type is ENUM, extract all the values and store them in a list, otherwise, store the value as a string 
                 item['segment_data_type'] = response.xpath(selector_segment_data_type_enum).extract()
-            else:
-                item['segment_data_type'] = response.xpath(selector_segment_data_type).get()
 
             item['segment_type_url'] = response.xpath(selector_segment_type_url).get()
             item['segment_filterable'] = response.xpath(selector_segment_filterable).get()
