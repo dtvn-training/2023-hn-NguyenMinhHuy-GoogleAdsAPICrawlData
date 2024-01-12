@@ -1,9 +1,10 @@
 db_config = {
-    'host': 'localhost',
+    'host': '192.168.0.44',
     'database': 'googleadsapi',
-    'user': 'test',
+    'user': 'ubuntu',
     'password': 'pass123',
 }
 
-resources_file_path = './google_ads_api/data_processed/resource-process.csv'
-fields_file_path = './google_ads_api/data_processed/field.csv'
+resources_file_path = '/home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/data_processed/resource-process.csv'
+fields_file_path = '/home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/data_processed/field.csv'
+

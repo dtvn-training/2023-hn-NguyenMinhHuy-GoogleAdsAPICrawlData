@@ -1,0 +1,3 @@
+#!/bin/bash
+rm /home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/data_processed/resource-process.csv && /home/data-integration/pan.sh -file /home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/ETL_transformation/resource-process.ktr
+rm /home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/data_processed/field.csv && /home/data-integration/pan.sh -file /home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/google_ads_api/ETL_transformation/field.ktr
