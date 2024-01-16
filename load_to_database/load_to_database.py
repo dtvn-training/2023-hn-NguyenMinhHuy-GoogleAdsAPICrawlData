@@ -154,7 +154,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 data_resources_attributes = (resources_id, attributes_id)
                                 cursor.execute(insert_query_resources_attributes, data_resources_attributes)
                             else:
-                                print(f"Resource '{attribute}' not found.")
+                                print(f"Attribute '{attribute}' not found.")
 
                     # Assuming 'metrics' is a column containing a list of metrics
                     metrics = row['list_metrics'].split(',')
@@ -179,7 +179,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 data_resources_metrics = (resources_id, metrics_id)
                                 cursor.execute(insert_query_resources_metrics, data_resources_metrics)
                             else:
-                                print(f"Resource '{metric}' not found.")
+                                print(f"Metric '{metric}' not found.")
 
 
                     # Assuming 'segments' is a column containing a list of segments 
@@ -205,7 +205,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 data_resources_segments = (resources_id, segments_id)
                                 cursor.execute(insert_query_resources_segments, data_resources_segments)
                             else:
-                                print(f"Resource '{segment}' not found.")
+                                print(f"Segment '{segment}' not found.")
 
                 else:
                     print(f"Resource '{row['resource_name']}' not found.")
@@ -235,7 +235,7 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 data_attributed_resources = (field_id, data_type_name.strip())
                                 cursor.execute(insert_query_attributed_resources, data_attributed_resources)
                             else:
-                                print(f"Resource '{attributed_resource}' not found.")
+                                print(f"Attributed resource '{attributed_resource}' not found.")
                     else: # if data_type_names have more than one element, insert each element into data_type table as ENUM
                         for data_type_name in data_type_names:
                             # Retrieve resource_id_2 based on 'attributed_resource'
@@ -248,7 +248,8 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                                 data_attributed_resources = (field_id, "ENUM", data_type_name.strip())
                                 cursor.execute(insert_query_attributed_resources, data_attributed_resources)
                             else:
-                                print(f"Resource '{attributed_resource}' not found.")
+                                # print(f"Attributed resource '{attributed_resource}' not found.")
+                                print (f"Field name '{row['field_name']}' not found.")
 
 
             elif table_name == 'selectable_with':
@@ -279,8 +280,8 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                             data_attributed_resources = (field_id, selectable_name.strip(), selectable_type)
                             cursor.execute(insert_query_attributed_resources, data_attributed_resources)
                 else:
-                    print(f"Resource '{attributed_resource}' not found.")
-
+                    # print(f"Attributed resource '{attributed_resource}' not found.")
+                    print (f"Field name '{row['field_name']}' not found.")
             else:
                 print("Table name not found.")
 

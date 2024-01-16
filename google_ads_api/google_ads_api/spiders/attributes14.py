@@ -29,6 +29,12 @@ class AttributesSpider(scrapy.Spider):
         while True:
             item = AttributesItem()
             selector = f"//table[@class='blue responsive']/tr/th/h2[@tabindex='-1'][{i}]/text()"
+            selector_attribute_name = f"(//table[@class='blue responsive']/tr/th/h2[@tabindex='-1'])[{i}]/text()"
+
+            # Check if the attribute name is present
+            attribute_name = response.xpath(selector_attribute_name).get()
+            if not attribute_name:
+                break            
             if response.xpath(selector).get() == "":
                 break
             else:
@@ -57,6 +63,6 @@ class AttributesSpider(scrapy.Spider):
                 item['attribute_selectable'] = response.xpath(selector_attribute_selectable).get()
                 item['attribute_sortable'] = response.xpath(selector_attribute_sortable).get()
                 item['attribute_repeated'] = response.xpath(selector_attribute_repeated).get()
-                item['attribute_selectable_with'] = "None"
+                item['attribute_selectable_with'] = "None12345"
                 yield item
                 i += 1

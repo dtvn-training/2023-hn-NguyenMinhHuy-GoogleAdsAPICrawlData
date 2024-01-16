@@ -39,5 +39,5 @@ class MetricsSpider(scrapy.Spider):
             item['metric_selectable'] = response.xpath(selector_metric_selectable).get()
             item['metric_sortable'] = response.xpath(selector_metric_sortable).get()
             item['metric_repeated'] = response.xpath(selector_metric_repeated).get()
-            item['metric_selectable_with'] = "None"
+            item['metric_selectable_with'] = "None12345"
             yield item
