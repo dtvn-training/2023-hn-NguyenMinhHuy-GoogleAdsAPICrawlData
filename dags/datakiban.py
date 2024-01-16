@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 crawl_bash_path = '/home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/dags/crawl_data.sh'
 transform_bash_path = '/home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/dags/transform_data.sh'
 load_to_database_bash_path = '/home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/dags/load_to_database.sh'
+check_diff_bash_path = '/home/huynm/2023-hn-NguyenMinhHuy-GoogleAdsAPICrawlData/dags/check_diff.sh'
 
 with DAG(
     dag_id='datakiban',
@@ -34,4 +35,10 @@ with DAG(
         dag=dag
     )
 
-    t1 >> t2 >> t3
+    t4 = BashOperator(
+        task_id='check_diff',
+        bash_command='bash ' + check_diff_bash_path + ' ',
+        dag=dag
+    )
+
+    t1 >> t2 >> t3 >> t4

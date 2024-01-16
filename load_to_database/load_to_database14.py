@@ -32,15 +32,15 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
         connection = mysql.connector.connect(**db_config)
 
         # Create a MySQL cursor
-        cursor = connection.cursor()
+        cursor = connection.cursor(buffered=True) # buffered=True is required for rowcount to work properly
         for _, row in df.iterrows(): # Iterate over DataFrame rows as (index, Series) pairs.
             if (table_name == 'resources'):
                 # Insert into resources table
                 insert_query_resources = """
                 INSERT INTO resources (name, description, with_metrics, version)
-                VALUES (%s, %s, %s, "14");
+                VALUES (%s, %s, %s, %s);
                 """
-                data_resources = (row['resource_name'], row['description'], row['with_metrics'])
+                data_resources = (row['resource_name'], row['description'], row['with_metrics'], 14)
                 cursor.execute(insert_query_resources, data_resources)
 
             elif (table_name == 'fields'):
@@ -60,9 +60,8 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
             elif table_name == 'segmenting_attributed_resources':
                 # Assuming 'resource_name' is a column in your DataFrame
                 # Retrieve resource_id_1 based on 'resource_name'
-                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],))
-                result = cursor.fetchone() 
-
+                cursor.execute("SELECT id FROM resources WHERE name = %s", (row['resource_name'],)) # error: unread result found when using cursor.execute. 
+                result = cursor.fetchone()
                 # Check if a row is returned
                 if result:
                     resource_id_1 = result[0]
@@ -139,9 +138,10 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                             if attribute.strip().find(check_resource_name) == -1:  
                                 attribute = row['resource_name'] + "." + attribute.strip()
                                 cursor.execute("SELECT id FROM fields WHERE name = %s", (attribute,))
+                                result = cursor.fetchone()
                             else:
                                 cursor.execute("SELECT id FROM fields WHERE name = %s", (attribute.strip(),))
-                            result = cursor.fetchone()
+                                result = cursor.fetchone()
 
                             # Check if a row is returned
                             if result:
@@ -292,7 +292,6 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
         connection.close()
 
         print("Data loaded successfully to MySQL database.")
-        print("Finished loading data to MySQL database.")
 
     except Error as e:
         print(f"Error: {e}")
@@ -311,6 +310,9 @@ load_csv_to_mysql(resources_file_path14, 'resources_fields', db_config)
 load_csv_to_mysql(fields_file_path14, 'data_type', db_config)
 
 load_csv_to_mysql(fields_file_path14, 'selectable_with', db_config)
+
+print("Finished loading data to MySQL database.")
+
 
 
 

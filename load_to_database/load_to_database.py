@@ -139,9 +139,10 @@ def load_csv_to_mysql(csv_file, table_name, db_config):     # This function load
                             if attribute.strip().find(check_resource_name) == -1:  
                                 attribute = row['resource_name'] + "." + attribute.strip()
                                 cursor.execute("SELECT id FROM fields WHERE name = %s", (attribute,))
+                                result = cursor.fetchone()
                             else:
                                 cursor.execute("SELECT id FROM fields WHERE name = %s", (attribute.strip(),))
-                            result = cursor.fetchone()
+                                result = cursor.fetchone()
 
                             # Check if a row is returned
                             if result:
@@ -310,6 +311,7 @@ load_csv_to_mysql(fields_file_path, 'data_type', db_config)
 
 load_csv_to_mysql(fields_file_path, 'selectable_with', db_config)
 
+print("Finished loading data to MySQL database.")
 
 
 
